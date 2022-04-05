@@ -14,10 +14,12 @@ const deleteAllBtn = document.querySelector(".delete_all_btn")
 const deleteBtn = document.getElementsByClassName("delete_btn")
 const editBtn = document.getElementsByClassName("edit_btn")
 const acceptBtn = document.querySelector(".accept_changes_btn")
+// const normalBtns = document.querySelectorAll(".normal")
 //dodatkowe zmienne
 let positionID = 0
 let idToEdit;
 let categoryValue;
+let selectedValue;
 
 //funkcje
 const addPosition = () => {
@@ -54,6 +56,8 @@ const createPosition = () => {
 }
 const setCategory = () => {
     categoryValue = category.options[category.selectedIndex].text
+    selectedValue = category.value
+    console.log(selectedValue)
 }
 const clearInputs = () => {
     category.selectedIndex = 0
@@ -76,10 +80,10 @@ const editPosition = (positionID) => {
     idToEdit = positionToEdit.getAttribute("id")
     //category
     const categoryToEdit = positionToEdit.querySelector(".pos_category")
-    console.log(categoryToEdit)
     categoryValue = categoryToEdit.textContent
-    console.log(categoryValue)
-    category.options[category.selectedIndex].text = categoryValue
+    category.value = selectedValue
+    // category.options[category.selectedIndex].text = categoryValue
+
     //name
     const nameToEdit = positionToEdit.querySelector(".pos_name")
     name.value = nameToEdit.textContent
@@ -116,6 +120,7 @@ const acceptChanges = () => {
     const amountChanged = amountToEdit.querySelector(".pos_amount")
     amountChanged.textContent = amount.value
 
+    clearInputs()
 }
 
 addBtn.addEventListener("click", addPosition)
