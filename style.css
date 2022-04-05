@@ -1,0 +1,35 @@
+* {
+    border: 2px solid blue;
+}
+
+.hidden {
+    display: none;
+}
+
+p {
+    hyphens: auto;
+    word-wrap: break-word;
+}
+
+
+.list_area,
+.position_area {
+    display: inline-flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-items: stretch;
+    align-content: flex-start;
+}
+
+.up,
+.nav_area,
+.nav_list,
+.position {
+    display: inline-flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-items: stretch;
+    align-content: flex-start;
+}

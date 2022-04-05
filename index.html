@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://kit.fontawesome.com/5cf5e2b947.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <h1>Stanowisko komputerowe</h1>
+    <div class="wrapper">
+        <div class="up">
+            <div class="nav_area">
+                <div class="nav">
+                    <p class="p_area">Kategoria</p>
+                    <div class="input_area">
+                        <select id="category" onchange="setCategory()">
+                            <option value="0" disabled selected>-- wybierz kategorię produktu --</option>
+                            <option value="1">Podzespoły komputerowe</option>
+                            <option value="1">Urządzenia peryferyjne</option>
+                            <option value="1">Oprogramowanie</option>
+                            <option value="1">Meble</option>
+                            <option value="1">Inne</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="nav">
+                    <p class="p_area">Nazwa</p>
+                    <div class="input_area">
+                        <input class="name" type="text" placeholder="np. procesor, obudowa...">
+                    </div>
+                </div>
+
+            </div>
+            <div class="nav">
+                <p class="p_area">Cena</p>
+                <div class="input_area">
+                    <input class="price" type="number" step="any" min="0.01" placeholder="wprowadź cenę produktu">
+                </div>
+            </div>
+            <div class="nav">
+                <p class="p_area">Ilość</p>
+                <div class="input_area">
+                    <input class="amount" type="number" min="1" value="1">
+                </div>
+            </div>
+            <div class="additional_menu">
+                <button class="add_btn">Dodaj</button>
+                <button class="clear_btn">Wyczyść</button>
+                <button class="delete_all_btn">Usuń wszystko</button>
+                <button class="accept_changes_btn">akceptuj zmiany</button>
+            </div>
+        </div>
+
+    </div>
+    <div class="middle">
+        <div class="nav">
+            <p class="p_area">Opis</p>
+            <div class="input_area">
+                <textarea id="desc" placeholder="opcjonalnie; np. firma, model produktu..."></textarea>
+            </div>
+        </div>
+    </div>
+    <div class="down">
+        <div class="list_area">
+            <div class="nav_list">
+                <p class="nav_list_element">Kategoria</p>
+                <p class="nav_list_element">Nazwa</p>
+                <p class="nav_list_element">Opis</p>
+                <p class="nav_list_element">Cena jednostkowa</p>
+                <p class="nav_list_element">Ilość</p>
+
+            </div>
+            <div class="position_area"></div>
+        </div>
+
+    </div>
+    <script src="script.js"></script>
+</body>
+
+</html>
