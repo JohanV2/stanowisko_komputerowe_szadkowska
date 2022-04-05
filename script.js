@@ -14,7 +14,8 @@ const deleteAllBtn = document.querySelector(".delete_all_btn")
 const deleteBtn = document.getElementsByClassName("delete_btn")
 const editBtn = document.getElementsByClassName("edit_btn")
 const acceptBtn = document.querySelector(".accept_changes_btn")
-// const normalBtns = document.querySelectorAll(".normal")
+const normalBtns = document.querySelectorAll(".normal")
+const specialBtns = document.querySelectorAll(".special")
 //dodatkowe zmienne
 let positionID = 0
 let idToEdit;
@@ -57,7 +58,6 @@ const createPosition = () => {
 const setCategory = () => {
     categoryValue = category.options[category.selectedIndex].text
     selectedValue = category.value
-    console.log(selectedValue)
 }
 const clearInputs = () => {
     category.selectedIndex = 0
@@ -65,7 +65,6 @@ const clearInputs = () => {
     desc.value = ""
     price.value = ""
     amount.value = "1"
-    console.log(`${idToEdit} poza funkcją`)
 }
 const deleteAll = () => {
     positionArea.textContent = ""
@@ -74,7 +73,14 @@ const deletePosition = (positionID) => {
     const positionNotWanted = document.getElementById(positionID)
     positionArea.removeChild(positionNotWanted)
 }
-
+const hideButtons = () => {
+    for (let i = 0; i < normalBtns.length; i++) {
+        normalBtns[i].classList.toggle("hidden")
+    }
+    for (let i = 0; i < specialBtns.length; i++) {
+        specialBtns[i].classList.toggle("hidden")
+    }
+}
 const editPosition = (positionID) => {
     let positionToEdit = document.getElementById(positionID)
     idToEdit = positionToEdit.getAttribute("id")
@@ -82,8 +88,6 @@ const editPosition = (positionID) => {
     const categoryToEdit = positionToEdit.querySelector(".pos_category")
     categoryValue = categoryToEdit.textContent
     category.value = selectedValue
-    // category.options[category.selectedIndex].text = categoryValue
-
     //name
     const nameToEdit = positionToEdit.querySelector(".pos_name")
     name.value = nameToEdit.textContent
@@ -96,6 +100,8 @@ const editPosition = (positionID) => {
     //amount
     const amountToEdit = positionToEdit.querySelector(".pos_amount")
     amount.value = amountToEdit.textContent
+    //
+    hideButtons()
 }
 const acceptChanges = () => {
     //category
@@ -119,8 +125,9 @@ const acceptChanges = () => {
     const amountToEdit = document.getElementById(idToEdit)
     const amountChanged = amountToEdit.querySelector(".pos_amount")
     amountChanged.textContent = amount.value
-
+    //
     clearInputs()
+    hideButtons()
 }
 
 addBtn.addEventListener("click", addPosition)
