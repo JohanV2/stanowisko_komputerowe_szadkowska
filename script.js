@@ -5,7 +5,6 @@ const desc = document.querySelector("#desc")
 const price = document.querySelector(".price")
 const amount = document.querySelector(".amount")
 //pobranie pól
-const listArea = document.querySelector(".list_area")
 const positionArea = document.querySelector(".position_area")
 //pobranie przycisków
 const addBtn = document.querySelector(".add_btn")
@@ -53,7 +52,7 @@ const createPosition = () => {
                 <td class = "pos_category">${categoryValue}</th>
                 <td class = "pos_name">${name.value}</td>
                 <td class = "pos_desc">${desc.value}</td>
-                <td class = "pos_smount">${amount.value}</td>
+                <td class = "pos_amount">${amount.value}</td>
                 <td class = "pos_price">${price.value}</td>
                 <td><button class="delete_btn" onClick="deletePosition(${positionID})">X</button>
                     <button class="edit_btn" onClick="editPosition(${positionID})">e</button>
@@ -87,8 +86,8 @@ const deletePosition = (positionID) => {
     // price correction
     const deletedPrice = positionNotWanted.querySelector(".pos_price")
     const deletedAmount = positionNotWanted.querySelector(".pos_amount")
-    totalPrice = totalPrice - Number(deletedPrice.textContent) * Number(deletedAmount.textContent)
-    console.log(totalPrice)
+    totalPrice = totalPrice - Number(deletedPrice.textContent) * Number(deletedAmount.textContent);
+
     document.getElementById("showPrice").innerHTML = totalPrice;
 }
 const hideButtons = () => {
