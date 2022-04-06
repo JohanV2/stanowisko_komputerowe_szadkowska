@@ -10,6 +10,7 @@ const positionArea = document.querySelector(".position_area")
 const addBtn = document.querySelector(".add_btn")
 const clearBtn = document.querySelector(".clear_btn")
 const deleteAllBtn = document.querySelector(".delete_all_btn")
+const addCatehotyBtn = document.querySelector(".add_category_btn")
 const deleteBtn = document.getElementsByClassName("delete_btn")
 const editBtn = document.getElementsByClassName("edit_btn")
 const acceptBtn = document.querySelector(".accept_changes_btn")
@@ -53,7 +54,7 @@ const createPosition = () => {
                 <td class = "pos_desc">${desc.value}</td>
                 <td class = "pos_amount">${amount.value}</td>
                 <td class = "pos_price">${price.value}</td>
-                <td>
+                <td class = "pos_btns">
                     <button class="edit_btn" onClick="editPosition(${positionID})"><i class="fa-solid fa-pen"></i></button>
                     <button class="delete_btn" onClick="deletePosition(${positionID})"><i class="fa-solid fa-trash"></i></button>
                 </td>            
@@ -63,6 +64,7 @@ const createPosition = () => {
     totalPrice = totalPrice + Number(price.value) * Number(amount.value)
     totalAmount = totalAmount + Number(amount.value)
     showPriceAndAmount()
+    showNoPosMsg()
 }
 const setCategory = () => {
     categoryValue = category.options[category.selectedIndex].text
@@ -80,6 +82,8 @@ const deleteAll = () => {
     totalPrice = 0 //price correction
     totalAmount = 0 //amount corrcetion
     showPriceAndAmount()
+    showNoPosMsg()
+
 }
 const deletePosition = (positionID) => {
     const positionNotWanted = document.getElementById(positionID)
@@ -90,6 +94,7 @@ const deletePosition = (positionID) => {
     totalPrice = totalPrice - Number(deletedPrice.textContent) * Number(deletedAmount.textContent);
     totalAmount = totalAmount - Number(deletedAmount.textContent);
     showPriceAndAmount()
+    showNoPosMsg()
 }
 const hideButtons = () => {
     for (let i = 0; i < normalBtns.length; i++) {
@@ -153,12 +158,24 @@ const acceptChanges = () => {
     clearInputs()
     hideButtons()
     showPriceAndAmount()
+    showNoPosMsg()
 }
 const showPriceAndAmount = () => {
     document.getElementById("showedPrice").innerHTML = totalPrice;
     document.getElementById("showedAmount").innerHTML = totalAmount;
 }
 
+const showNoPosMsg = () => {
+    const noPosMsg = document.getElementById("no_positions_msg")
+    if (totalAmount == 0) {
+        noPosMsg.classList.remove("hidden")
+    }
+    else {
+        noPosMsg.classList.add("hidden")
+    }
+}
+
+showNoPosMsg()
 showPriceAndAmount()
 addBtn.addEventListener("click", addPosition)
 clearBtn.addEventListener("click", clearInputs)

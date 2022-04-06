@@ -4,6 +4,7 @@
     /* border: 2px solid blue; */
     box-sizing: border-box;
     font-family: 'Poppins', sans-serif;
+    background-color: rgb(231, 225, 218);
 }
 
 
@@ -46,19 +47,35 @@ td {
 
 }
 
+.pos_btns {
+    min-width: inherit;
+}
+
 .pos_price {
     text-align: center;
 }
-.add_btn{
+
+.add_btn {
     background-color: rgb(159, 217, 159);
 }
+
 .delete_all_btn {
- background-color: rgb(238, 138, 138);
+    background-color: rgb(238, 138, 138);
 }
+
 .delete_btn {
     color: rgb(252, 4, 4);
 }
 
 .edit_btn {
     color: rgb(69, 55, 27);
+}
+
+#no_positions_msg {
+    color: rgb(205, 53, 53);
+    text-align: center;
+}
+
+.down {
+    width: fit-content
 }
