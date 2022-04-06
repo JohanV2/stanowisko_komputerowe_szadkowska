@@ -4,19 +4,21 @@ const name = document.querySelector(".name")
 const desc = document.querySelector("#desc")
 const price = document.querySelector(".price")
 const amount = document.querySelector(".amount")
+const categoryInput = document.querySelector(".add_category_input")
 //getting fields
 const positionArea = document.querySelector(".position_area")
 //getting buttons
 const addBtn = document.querySelector(".add_btn")
 const clearBtn = document.querySelector(".clear_btn")
 const deleteAllBtn = document.querySelector(".delete_all_btn")
-const addCatehotyBtn = document.querySelector(".add_category_btn")
+const addCategoryBtn = document.querySelector(".add_category_btn")
 const deleteBtn = document.getElementsByClassName("delete_btn")
 const editBtn = document.getElementsByClassName("edit_btn")
 const acceptBtn = document.querySelector(".accept_changes_btn")
 const discardBtn = document.querySelector(".discard_changes_btn")
 const normalBtns = document.querySelectorAll(".normal")
 const specialBtns = document.querySelectorAll(".special")
+const createCategoryBtn = document.querySelector("create_category_btn")
 //additional variables
 let positionID = 0
 let idToEdit = 1;
@@ -29,6 +31,17 @@ let totalAmount = 0;
 let editedAmount = 0;
 
 //functions
+
+const addCategory = () => {
+    const newCategoryInput = document.querySelector(".add_category_input").value
+    console.log(newCategoryInput)
+    let newCategory = document.createElement("option")
+    newCategory.setAttribute("value", "1")
+    newCategory.innerText = `${newCategoryInput}`
+    category.appendChild(newCategory)
+}
+
+
 const addPosition = () => {
     if (category.options[category.selectedIndex].value === "0") {
         alert("Wybierz kategorię!")
@@ -183,3 +196,4 @@ deleteAllBtn.addEventListener("click", deleteAll)
 acceptBtn.addEventListener("click", acceptChanges)
 discardBtn.addEventListener("click", hideButtons)
 discardBtn.addEventListener("click", clearInputs)
+addCategoryBtn.addEventListener("click", addCategory)
