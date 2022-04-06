@@ -21,9 +21,12 @@ let positionID = 0
 let idToEdit;
 let categoryValue;
 let selectedValue;
+//price-showing variables
 let totalPrice = 0;
 let editedPrice = 0;
 let editedAmount = 0;
+// let deletedAmount = 0;
+// let deletedPrice = 0;
 
 //funkcje
 const addPosition = () => {
@@ -57,8 +60,8 @@ const createPosition = () => {
     `
     positionArea.appendChild(newPosition)
     positionID++ //zmienia ID każdej kolejnej pozycji
-    totalPrice = totalPrice + parseInt(price.value) * parseInt(amount.value)
-    console.log(totalPrice)
+    totalPrice = totalPrice + Number(price.value) * Number(amount.value)
+    document.getElementById("showPrice").innerHTML = totalPrice;
 }
 const setCategory = () => {
     categoryValue = category.options[category.selectedIndex].text
@@ -73,10 +76,18 @@ const clearInputs = () => {
 }
 const deleteAll = () => {
     positionArea.textContent = ""
+    totalPrice = 0 //price correction
+    document.getElementById("showPrice").innerHTML = totalPrice;
 }
 const deletePosition = (positionID) => {
     const positionNotWanted = document.getElementById(positionID)
     positionArea.removeChild(positionNotWanted)
+    // price correction
+    const deletedPrice = positionNotWanted.querySelector(".pos_price")
+    const deletedAmount = positionNotWanted.querySelector(".pos_amount")
+    totalPrice = totalPrice - Number(deletedPrice.textContent) * Number(deletedAmount.textContent)
+    console.log(totalPrice)
+    document.getElementById("showPrice").innerHTML = totalPrice;
 }
 const hideButtons = () => {
     for (let i = 0; i < normalBtns.length; i++) {
@@ -105,9 +116,10 @@ const editPosition = (positionID) => {
     //amount
     const amountToEdit = positionToEdit.querySelector(".pos_amount")
     amount.value = amountToEdit.textContent
-    //
-    editedPrice = parseInt(price.value)
-    editedAmount = parseInt(amount.value)
+    //price correction
+    editedPrice = Number(price.value)
+    editedAmount = Number(amount.value)
+    document.getElementById("showPrice").innerHTML = totalPrice;
     //
     hideButtons()
 }
@@ -133,13 +145,14 @@ const acceptChanges = () => {
     const amountToEdit = document.getElementById(idToEdit)
     const amountChanged = amountToEdit.querySelector(".pos_amount")
     amountChanged.textContent = amount.value
-    //
-    totalPrice = totalPrice - (editedPrice * editedAmount) + parseInt(priceChanged.textContent) * parseInt(amountChanged.textContent)
+    //price correction
+    totalPrice = totalPrice - (editedPrice * editedAmount) + Number(priceChanged.textContent) * Number(amountChanged.textContent)
     console.log(totalPrice)
+    document.getElementById("showPrice").innerHTML = totalPrice;
     clearInputs()
     hideButtons()
 }
-
+document.getElementById("showPrice").innerHTML = totalPrice;
 addBtn.addEventListener("click", addPosition)
 clearBtn.addEventListener("click", clearInputs)
 deleteAllBtn.addEventListener("click", deleteAll)
