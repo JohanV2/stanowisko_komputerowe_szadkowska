@@ -17,15 +17,14 @@ const normalBtns = document.querySelectorAll(".normal")
 const specialBtns = document.querySelectorAll(".special")
 //dodatkowe zmienne
 let positionID = 0
-let idToEdit;
+let idToEdit = 1;
 let categoryValue;
 let selectedValue;
 //price-showing variables
 let totalPrice = 0;
 let editedPrice = 0;
+let totalAmount = 0;
 let editedAmount = 0;
-// let deletedAmount = 0;
-// let deletedPrice = 0;
 
 //funkcje
 const addPosition = () => {
@@ -47,8 +46,7 @@ const createPosition = () => {
     const newPosition = document.createElement("tr")
     newPosition.setAttribute("id", positionID)
     newPosition.classList.add("position")
-    newPosition.innerHTML = `
-            
+    newPosition.innerHTML = `            
                 <td class = "pos_category">${categoryValue}</th>
                 <td class = "pos_name">${name.value}</td>
                 <td class = "pos_desc">${desc.value}</td>
@@ -56,13 +54,13 @@ const createPosition = () => {
                 <td class = "pos_price">${price.value}</td>
                 <td><button class="delete_btn" onClick="deletePosition(${positionID})">X</button>
                     <button class="edit_btn" onClick="editPosition(${positionID})">e</button>
-                </td>
-            
+                </td>            
     `
     positionArea.appendChild(newPosition)
     positionID++ //zmienia ID każdej kolejnej pozycji
     totalPrice = totalPrice + Number(price.value) * Number(amount.value)
-    document.getElementById("showPrice").innerHTML = totalPrice;
+    totalAmount = totalAmount + Number(amount.value)
+    showPriceAndAmount()
 }
 const setCategory = () => {
     categoryValue = category.options[category.selectedIndex].text
@@ -78,7 +76,8 @@ const clearInputs = () => {
 const deleteAll = () => {
     positionArea.textContent = ""
     totalPrice = 0 //price correction
-    document.getElementById("showPrice").innerHTML = totalPrice;
+    totalAmount = 0 //amount corrcetion
+    showPriceAndAmount()
 }
 const deletePosition = (positionID) => {
     const positionNotWanted = document.getElementById(positionID)
@@ -87,8 +86,8 @@ const deletePosition = (positionID) => {
     const deletedPrice = positionNotWanted.querySelector(".pos_price")
     const deletedAmount = positionNotWanted.querySelector(".pos_amount")
     totalPrice = totalPrice - Number(deletedPrice.textContent) * Number(deletedAmount.textContent);
-
-    document.getElementById("showPrice").innerHTML = totalPrice;
+    totalAmount = totalAmount - Number(deletedAmount.textContent);
+    showPriceAndAmount()
 }
 const hideButtons = () => {
     for (let i = 0; i < normalBtns.length; i++) {
@@ -120,8 +119,6 @@ const editPosition = (positionID) => {
     //price correction
     editedPrice = Number(price.value)
     editedAmount = Number(amount.value)
-    document.getElementById("showPrice").innerHTML = totalPrice;
-    //
     hideButtons()
 }
 const acceptChanges = () => {
@@ -149,11 +146,18 @@ const acceptChanges = () => {
     //price correction
     totalPrice = totalPrice - (editedPrice * editedAmount) + Number(priceChanged.textContent) * Number(amountChanged.textContent)
     console.log(totalPrice)
-    document.getElementById("showPrice").innerHTML = totalPrice;
+    totalAmount = totalAmount - editedAmount + Number(amountChanged.textContent)
+    console.log(totalPrice)
     clearInputs()
     hideButtons()
+    showPriceAndAmount()
 }
-document.getElementById("showPrice").innerHTML = totalPrice;
+const showPriceAndAmount = () => {
+    document.getElementById("showedPrice").innerHTML = totalPrice;
+    document.getElementById("showedAmount").innerHTML = totalAmount;
+}
+
+showPriceAndAmount()
 addBtn.addEventListener("click", addPosition)
 clearBtn.addEventListener("click", clearInputs)
 deleteAllBtn.addEventListener("click", deleteAll)
