@@ -1,21 +1,22 @@
-//pobranie inputów
+//getting inputs
 const category = document.querySelector("#category")
 const name = document.querySelector(".name")
 const desc = document.querySelector("#desc")
 const price = document.querySelector(".price")
 const amount = document.querySelector(".amount")
-//pobranie pól
+//getting fields
 const positionArea = document.querySelector(".position_area")
-//pobranie przycisków
+//getting buttons
 const addBtn = document.querySelector(".add_btn")
 const clearBtn = document.querySelector(".clear_btn")
 const deleteAllBtn = document.querySelector(".delete_all_btn")
 const deleteBtn = document.getElementsByClassName("delete_btn")
 const editBtn = document.getElementsByClassName("edit_btn")
 const acceptBtn = document.querySelector(".accept_changes_btn")
+const discardBtn = document.querySelector(".discard_changes_btn")
 const normalBtns = document.querySelectorAll(".normal")
 const specialBtns = document.querySelectorAll(".special")
-//dodatkowe zmienne
+//additional variables
 let positionID = 0
 let idToEdit = 1;
 let categoryValue;
@@ -26,7 +27,7 @@ let editedPrice = 0;
 let totalAmount = 0;
 let editedAmount = 0;
 
-//funkcje
+//functions
 const addPosition = () => {
     if (category.options[category.selectedIndex].value === "0") {
         alert("Wybierz kategorię!")
@@ -52,8 +53,9 @@ const createPosition = () => {
                 <td class = "pos_desc">${desc.value}</td>
                 <td class = "pos_amount">${amount.value}</td>
                 <td class = "pos_price">${price.value}</td>
-                <td><button class="delete_btn" onClick="deletePosition(${positionID})">X</button>
-                    <button class="edit_btn" onClick="editPosition(${positionID})">e</button>
+                <td>
+                    <button class="edit_btn" onClick="editPosition(${positionID})"><i class="fa-solid fa-pen"></i></button>
+                    <button class="delete_btn" onClick="deletePosition(${positionID})"><i class="fa-solid fa-trash"></i></button>
                 </td>            
     `
     positionArea.appendChild(newPosition)
@@ -162,3 +164,5 @@ addBtn.addEventListener("click", addPosition)
 clearBtn.addEventListener("click", clearInputs)
 deleteAllBtn.addEventListener("click", deleteAll)
 acceptBtn.addEventListener("click", acceptChanges)
+discardBtn.addEventListener("click", hideButtons)
+discardBtn.addEventListener("click", clearInputs)

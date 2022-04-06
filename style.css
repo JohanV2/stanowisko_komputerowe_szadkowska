@@ -35,5 +35,30 @@ th {
     hyphens: auto;
     word-wrap: break-word;
     max-width: 350px;
-    min-width: 80px;
+    min-width: 100px;
+    padding: 5px
+}
+
+table,
+td {
+    border-collapse: collapse;
+    border: 1px solid black;
+
+}
+
+.pos_price {
+    text-align: center;
+}
+.add_btn{
+    background-color: rgb(159, 217, 159);
+}
+.delete_all_btn {
+ background-color: rgb(238, 138, 138);
+}
+.delete_btn {
+    color: rgb(252, 4, 4);
+}
+
+.edit_btn {
+    color: rgb(69, 55, 27);
 }
