@@ -45,18 +45,20 @@ const addPosition = () => {
     }
 }
 const createPosition = () => {
-    const newPosition = document.createElement("div")
+    const newPosition = document.createElement("tr")
     newPosition.setAttribute("id", positionID)
     newPosition.classList.add("position")
     newPosition.innerHTML = `
-        <p class="pos_category">${categoryValue}</p>
-        <p class="pos_name">${name.value}</p>
-        <p class="pos_desc">${desc.value}</p>
-        <p class="pos_amount">${amount.value}</p>
-        <p class="pos_price">${price.value}</p>
-        <button class="delete_btn" onClick = "deletePosition(${positionID})">X</button>
-        <button class="edit_btn" onClick = "editPosition(${positionID})">e</button>
-
+            
+                <td class = "pos_category">${categoryValue}</th>
+                <td class = "pos_name">${name.value}</td>
+                <td class = "pos_desc">${desc.value}</td>
+                <td class = "pos_smount">${amount.value}</td>
+                <td class = "pos_price">${price.value}</td>
+                <td><button class="delete_btn" onClick="deletePosition(${positionID})">X</button>
+                    <button class="edit_btn" onClick="editPosition(${positionID})">e</button>
+                </td>
+            
     `
     positionArea.appendChild(newPosition)
     positionID++ //zmienia ID każdej kolejnej pozycji
