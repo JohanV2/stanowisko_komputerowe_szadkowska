@@ -12,11 +12,13 @@
 
 <body>
     <h1>Stanowisko komputerowe</h1>
-    <p id = "showPrice"></p>
+    <h2>Suma kosztów: <span id="showPrice"></span>zł</h2>
+    <h2>Ilość pozycji: <span id="showAmount"></span></h2>
+
     <div class="wrapper">
         <div class="up">
             <div class="nav_area">
-                <div class="nav">
+                <div class="nav cat">
                     <p class="p_area">Kategoria</p>
                     <div class="input_area">
                         <select id="category" onchange="setCategory()">
@@ -36,17 +38,17 @@
                     </div>
                 </div>
 
-            </div>
-            <div class="nav">
-                <p class="p_area">Cena</p>
-                <div class="input_area">
-                    <input class="price" type="number" step="any" min="0.01" placeholder="wprowadź cenę produktu">
+                <div class="nav digits">
+                    <p class="p_area">Ilość</p>
+                    <div class="input_area">
+                        <input class="amount" type="number" min="1" value="1">
+                    </div>
                 </div>
-            </div>
-            <div class="nav">
-                <p class="p_area">Ilość</p>
-                <div class="input_area">
-                    <input class="amount" type="number" min="1" value="1">
+                <div class="nav digits">
+                    <p class="p_area">Cena</p>
+                    <div class="input_area">
+                        <input class="price" type="number" step="any" min="0.01" placeholder="wprowadź cenę produktu">
+                    </div>
                 </div>
             </div>
             <div class="additional_menu">
@@ -54,6 +56,7 @@
                 <button class="clear_btn normal">Wyczyść</button>
                 <button class="delete_all_btn normal">Usuń wszystko</button>
                 <button class="accept_changes_btn special hidden">akceptuj zmiany</button>
+                <button class="add_category normal">Dodaj kategorię</button>
             </div>
         </div>
 
@@ -69,12 +72,11 @@
     <div class="down">
         <div class="list_area">
             <div class="nav_list">
-                <p class="nav_list_element">Kategoria</p>
-                <p class="nav_list_element">Nazwa</p>
-                <p class="nav_list_element">Opis</p>
-                <p class="nav_list_element">Cena jednostkowa</p>
-                <p class="nav_list_element">Ilość</p>
-
+                <p class="nav_list_header_category">Kategoria</p>
+                <p class="nav_list_header_name">Nazwa</p>
+                <p class="nav_list_header_desc">Opis</p>
+                <p class="nav_list_header_amount">Ilość</p>
+                <p class="nav_list_header_price">Cena jednostkowa</p>
             </div>
             <div class="position_area"></div>
         </div>

@@ -1,5 +1,9 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
 * {
     border: 2px solid blue;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
 }
 
 .hidden {
@@ -11,6 +15,17 @@ p {
     word-wrap: break-word;
 }
 
+.nav {
+    width: 300px
+}
+
+.cat {
+    width: 220px;
+}
+
+.digits {
+    width: 200px
+}
 
 .list_area,
 .position_area {
@@ -32,4 +47,29 @@ p {
     justify-content: flex-start;
     align-items: stretch;
     align-content: flex-start;
+}
+
+.down .nav_list_header_category,
+.pos_category {
+    width: 200px
+}
+
+.down .nav_list_header_name,
+.pos_name {
+    width: 200px
+}
+
+.down .nav_list_header_desc,
+.pos_desc {
+    width: 250px
+}
+
+.down .nav_list_header_amount,
+.pos_amount {
+    width: 50px
+}
+
+.down .nav_list_header_price,
+.pos_price {
+    width: 110px
 }

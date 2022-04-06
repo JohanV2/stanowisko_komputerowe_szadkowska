@@ -52,8 +52,8 @@ const createPosition = () => {
         <p class="pos_category">${categoryValue}</p>
         <p class="pos_name">${name.value}</p>
         <p class="pos_desc">${desc.value}</p>
-        <p class="pos_price">${price.value}</p>
         <p class="pos_amount">${amount.value}</p>
+        <p class="pos_price">${price.value}</p>
         <button class="delete_btn" onClick = "deletePosition(${positionID})">X</button>
         <button class="edit_btn" onClick = "editPosition(${positionID})">e</button>
 
