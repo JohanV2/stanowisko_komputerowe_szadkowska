@@ -21,6 +21,9 @@ let positionID = 0
 let idToEdit;
 let categoryValue;
 let selectedValue;
+let totalPrice = 0;
+let editedPrice = 0;
+let editedAmount = 0;
 
 //funkcje
 const addPosition = () => {
@@ -54,6 +57,8 @@ const createPosition = () => {
     `
     positionArea.appendChild(newPosition)
     positionID++ //zmienia ID każdej kolejnej pozycji
+    totalPrice = totalPrice + parseInt(price.value) * parseInt(amount.value)
+    console.log(totalPrice)
 }
 const setCategory = () => {
     categoryValue = category.options[category.selectedIndex].text
@@ -101,6 +106,9 @@ const editPosition = (positionID) => {
     const amountToEdit = positionToEdit.querySelector(".pos_amount")
     amount.value = amountToEdit.textContent
     //
+    editedPrice = parseInt(price.value)
+    editedAmount = parseInt(amount.value)
+    //
     hideButtons()
 }
 const acceptChanges = () => {
@@ -126,6 +134,8 @@ const acceptChanges = () => {
     const amountChanged = amountToEdit.querySelector(".pos_amount")
     amountChanged.textContent = amount.value
     //
+    totalPrice = totalPrice - (editedPrice * editedAmount) + parseInt(priceChanged.textContent) * parseInt(amountChanged.textContent)
+    console.log(totalPrice)
     clearInputs()
     hideButtons()
 }
