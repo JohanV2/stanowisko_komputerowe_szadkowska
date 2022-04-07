@@ -59,7 +59,7 @@ td {
 }
 
 table {
-    /* v important to darg and drop to work */
+    /* very important to darg and drop to work */
     user-select: none;
 }
 

@@ -26,6 +26,7 @@ let positionID = 1;
 let idToEdit;
 let categoryValue;
 let selectedValue;
+let row;
 //price-showing variables
 let totalPrice = 0;
 let editedPrice = 0;
@@ -33,6 +34,10 @@ let totalAmount = 0;
 let editedAmount = 0;
 
 //functions
+
+
+
+
 
 const addCategory = () => {
     const newCategoryInput = document.querySelector(".add_category_input").value
@@ -137,11 +142,8 @@ const editPosition = (positionID) => {
     idToEdit = positionToEdit.getAttribute("id")
     //category
     const categoryToEdit = positionToEdit.querySelector(".pos_category")
-    console.log(categoryToEdit)
     categoryValue = categoryToEdit.textContent
-    console.log(categoryToEdit.textContent)
-    console.log("---")
-    // category.value = selectedValue
+    category.options[category.selectedIndex].innerHTML = categoryValue
 
     //name
     const nameToEdit = positionToEdit.querySelector(".pos_name")
@@ -203,19 +205,13 @@ const showNoPosMsg = () => {
         noPosMsg.classList.add("hidden")
     }
 }
-
-//drag and drop
-var row;
-
 function dragstart() {
     row = event.target;
 }
 function dragover() {
     var e = event;
     e.preventDefault();
-
     let children = Array.from(e.target.parentNode.parentNode.children);
-
     if (children.indexOf(e.target.parentNode) > children.indexOf(row))
         e.target.parentNode.after(row);
     else
@@ -224,6 +220,64 @@ function dragover() {
 
 
 
+/////////////
+function filterAndHightlight() {
+    // Declare variables
+    var finput = document.querySelector("input");
+    var filter = finput.value.toUpperCase();
+    var table = document.querySelector("table");
+    var tr = table.getElementsByTagName("tr");
+    var bgColor = 'yellow';
+    var txtColor = 'black';
+
+    // Loop through all table rows, and hide those who don't match the search query
+    for (var i = 1; i < tr.length; i++) {
+
+        //get all tds
+        var tds = tr[i].querySelectorAll('td');
+        var flagFound = false;
+
+        //Loop through all tds in this row
+        for (var e = 0; e < tds.length; e++) {
+
+            //get data from the cell
+            var txtValue = tds[e].textContent || tds[e].innerText;
+            var copyVal = tds[e].textContent || tds[e].innerText;
+
+            if (filter != '') {
+                var index = txtValue.toUpperCase().indexOf(filter);
+
+                if (index > -1) {
+                    flagFound = true;
+
+                    tds[e].innerHTML = copyVal.substring(0, index) +
+                        "<span style='background-color:" + bgColor + ";color:" + txtColor + "'>" +
+                        copyVal.substring(index, index + finput.value.length) + "</span>" +
+                        copyVal.substring(index + finput.value.length);
+                } else {
+                    tds[e].innerHTML = copyVal;
+                }
+            } else {
+                flagFound = true;
+                tds[e].innerHTML = copyVal;
+            }
+        }
+
+        //hiding or showing row
+        if (flagFound == true) {
+            tr[i].style.display = "";
+        } else {
+            tr[i].style.display = "none";
+        }
+    }
+}
+function clearFilter() {
+    document.querySelector(".filter_input").value = "";
+    filterAndHightlight();
+}
+
+
+/////////////////////////////////////////////////
 showNoPosMsg()
 showPriceAndAmount()
 addBtn.addEventListener("click", addPosition)
