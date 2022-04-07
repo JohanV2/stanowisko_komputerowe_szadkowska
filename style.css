@@ -39,10 +39,10 @@ h1 {
     display: none;
 }
 
-table
-{
+table {
     border-collapse: collapse;
 }
+
 th {
     border-collapse: collapse;
     border: 2px solid black;
@@ -89,11 +89,18 @@ tr.position {
     text-align: right;
 }
 
-.add_btn {
+button,
+#category {
+    cursor: pointer;
+}
+
+.add_btn,
+.add_category_btn {
     background-color: rgb(159, 217, 159);
 }
 
-.delete_all_btn {
+.delete_all_btn,
+.discard_category_btn {
     background-color: rgb(238, 138, 138);
 }
 
@@ -103,6 +110,9 @@ tr.position {
 
 .edit_btn {
     color: rgb(69, 55, 27);
+}
+.create_category_btn{
+    background-color: rgb(227, 227, 152);
 }
 
 #no_positions_msg {
