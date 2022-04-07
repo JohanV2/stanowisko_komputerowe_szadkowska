@@ -64,6 +64,9 @@ const addPosition = () => {
 const createPosition = () => {
     const newPosition = document.createElement("tr")
     newPosition.setAttribute("id", positionID)
+    newPosition.setAttribute("draggable", "true")
+    newPosition.setAttribute("ondragstart", "dragstart()")
+    newPosition.setAttribute("ondragover", "dragover()")
     newPosition.classList.add("position")
     newPosition.innerHTML = `        
                 <td class = "id_category">${positionID}</th>       
@@ -201,18 +204,36 @@ const showNoPosMsg = () => {
     }
 }
 
+//drag and drop
+var row;
+
+function dragstart() {
+    row = event.target;
+}
+function dragover() {
+    var e = event;
+    e.preventDefault();
+
+    let children = Array.from(e.target.parentNode.parentNode.children);
+
+    if (children.indexOf(e.target.parentNode) > children.indexOf(row))
+        e.target.parentNode.after(row);
+    else
+        e.target.parentNode.before(row);
+}
 
 
-        showNoPosMsg()
-        showPriceAndAmount()
-        addBtn.addEventListener("click", addPosition)
-        clearBtn.addEventListener("click", clearInputs)
-        deleteAllBtn.addEventListener("click", deleteAll)
-        acceptBtn.addEventListener("click", acceptChanges)
-        discardBtn.addEventListener("click", hideButtons)
-        discardBtn.addEventListener("click", clearInputs)
-        addCategoryBtn.addEventListener("click", addCategory)
-        addCategoryBtn.addEventListener("click", toggleCategoryCreate)
-        createCategoryBtn.addEventListener("click", toggleCategoryCreate)
-        discardCategoryBtn.addEventListener("click", discardCategory)
-        discardCategoryBtn.addEventListener("click", toggleCategoryCreate)
+
+showNoPosMsg()
+showPriceAndAmount()
+addBtn.addEventListener("click", addPosition)
+clearBtn.addEventListener("click", clearInputs)
+deleteAllBtn.addEventListener("click", deleteAll)
+acceptBtn.addEventListener("click", acceptChanges)
+discardBtn.addEventListener("click", hideButtons)
+discardBtn.addEventListener("click", clearInputs)
+addCategoryBtn.addEventListener("click", addCategory)
+addCategoryBtn.addEventListener("click", toggleCategoryCreate)
+createCategoryBtn.addEventListener("click", toggleCategoryCreate)
+discardCategoryBtn.addEventListener("click", discardCategory)
+discardCategoryBtn.addEventListener("click", toggleCategoryCreate)

@@ -58,6 +58,15 @@ td {
 
 }
 
+table {
+    /* v important to darg and drop to work */
+    user-select: none;
+}
+
+tr.position {
+    cursor: move;
+}
+
 .price_th {
     width: 210px;
 }
