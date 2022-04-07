@@ -219,64 +219,6 @@ function dragover() {
 }
 
 
-
-/////////////
-function filterAndHightlight() {
-    // Declare variables
-    var finput = document.querySelector("input");
-    var filter = finput.value.toUpperCase();
-    var table = document.querySelector("table");
-    var tr = table.getElementsByTagName("tr");
-    var bgColor = 'yellow';
-    var txtColor = 'black';
-
-    // Loop through all table rows, and hide those who don't match the search query
-    for (var i = 1; i < tr.length; i++) {
-
-        //get all tds
-        var tds = tr[i].querySelectorAll('td');
-        var flagFound = false;
-
-        //Loop through all tds in this row
-        for (var e = 0; e < tds.length; e++) {
-
-            //get data from the cell
-            var txtValue = tds[e].textContent || tds[e].innerText;
-            var copyVal = tds[e].textContent || tds[e].innerText;
-
-            if (filter != '') {
-                var index = txtValue.toUpperCase().indexOf(filter);
-
-                if (index > -1) {
-                    flagFound = true;
-
-                    tds[e].innerHTML = copyVal.substring(0, index) +
-                        "<span style='background-color:" + bgColor + ";color:" + txtColor + "'>" +
-                        copyVal.substring(index, index + finput.value.length) + "</span>" +
-                        copyVal.substring(index + finput.value.length);
-                } else {
-                    tds[e].innerHTML = copyVal;
-                }
-            } else {
-                flagFound = true;
-                tds[e].innerHTML = copyVal;
-            }
-        }
-
-        //hiding or showing row
-        if (flagFound == true) {
-            tr[i].style.display = "";
-        } else {
-            tr[i].style.display = "none";
-        }
-    }
-}
-function clearFilter() {
-    document.querySelector(".filter_input").value = "";
-    filterAndHightlight();
-}
-
-
 /////////////////////////////////////////////////
 showNoPosMsg()
 showPriceAndAmount()
