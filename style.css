@@ -44,14 +44,22 @@ th {
     hyphens: auto;
     word-wrap: break-word;
     max-width: 350px;
-    min-width: 100px;
-    padding: 5px
+    min-width: 110px;
+    padding: 5px;
+    text-align: left;
+    border-collapse: collapse;
+    border: 1px solid black;
 }
+
 table,
 td {
     border-collapse: collapse;
     border: 1px solid black;
 
+}
+
+.price_th {
+    width: 210px;
 }
 
 .pos_btns {

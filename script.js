@@ -201,32 +201,7 @@ const showNoPosMsg = () => {
     }
 }
 
-////////////////////////////
-// $(document).ready(function () {
-//     $('#table_id').DataTable();
-// });
-//
 
-var tables = document.getElementById("table_id"),
-    table,
-    thead,
-    headers,
-    i,
-    j;
-
-for (i = 0; i < tables.length; i++) {
-    table = tables[i];
-
-    if (thead = table.getElementsByTagName("thead")) {
-        headers = thead.getElementsByTagName("th");
-
-        for (j = 0; j < headers.length; j++) {
-            headers[j].innerHTML = "<a href='#'>" + headers[j].innerText + "</a>";
-        }
-
-        thead.addEventListener("click", sortTableFunction(table));
-    }
-}
 
         showNoPosMsg()
         showPriceAndAmount()
