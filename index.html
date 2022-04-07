@@ -11,11 +11,12 @@
 </head>
 
 <body>
-    <h1>Stanowisko komputerowe</h1>
-    <h2>Suma kosztów: <span id="showedPrice"></span>zł</h2>
-    <h2>Ilość pozycji: <span id="showedAmount"></span></h2>
-
     <div class="wrapper">
+        <h1>Stanowisko komputerowe</h1>
+        <h2>Suma kosztów: <span id="showedPrice"></span>zł</h2>
+        <h2>Ilość pozycji: <span id="showedAmount"></span></h2>
+
+
         <div class="up">
             <div class="nav_area">
                 <div class="nav cat">
@@ -58,42 +59,44 @@
                 <button class="accept_changes_btn special hidden">akceptuj zmiany</button>
                 <button class="discard_changes_btn special hidden">odrzuć zmiany</button>
                 <button class="add_category_btn  hidden">Dodaj kategorię-akceptuj</button>
+                <button class="discard_category_btn  hidden">Dodaj kategorię-odrzuć</button>
                 <button class="create_category_btn normal category_creation">Dodaj kategorię-create</button>
                 <input type="text" class="add_category_input hidden">
             </div>
         </div>
 
-    </div>
-    <div class="middle">
-        <div class="nav">
-            <p class="p_area">Opis</p>
-            <div class="input_area">
-                <textarea id="desc" placeholder="opcjonalnie; np. firma, model produktu..."></textarea>
+
+        <div class="middle">
+            <div class="nav">
+                <p class="p_area">Opis</p>
+                <div class="input_area">
+                    <textarea id="desc" placeholder="opcjonalnie; np. firma, model produktu..."></textarea>
+                </div>
             </div>
         </div>
-    </div>
-    <div class="down">
-        <div class="header_table_area"></div>
-        <table>
-            <thead>
-                <tr>
-                    <th>Kategoria</th>
-                    <th>Nazwa</th>
-                    <th>Opis</th>
-                    <th>Ilość</th>
-                    <th>Cena jednostkowa (zł)</th>
-                </tr>
-            </thead>
-            <tbody class="position_area">
-                <!-- insertion place -->
-            </tbody>
-        </table>
-        <p id="no_positions_msg" class="hidden">Brak pozycji!</p>
-    </div>
+        <div class="down">
+            <div class="header_table_area"></div>
+            <table class="sortable" id="table_id">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Kategoria</th>
+                        <th>Nazwa</th>
+                        <th>Opis</th>
+                        <th>Ilość</th>
+                        <th>Cena jednostkowa (zł)</th>
+                    </tr>
+                </thead>
+                <tbody class="position_area" id="myTable">
+                    <!-- insertion place -->
+                </tbody>
+            </table>
+            <p id="no_positions_msg" class="hidden">Brak pozycji!</p>
+        </div>
 
     </div>
     <script src="script.js"></script>
-
+    <script src="sorttable.js"></script>
 </body>
 
 </html>

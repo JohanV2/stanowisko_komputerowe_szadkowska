@@ -1,4 +1,5 @@
 //getting inputs
+const id = document.querySelector(".id")
 const category = document.querySelector("#category")
 const name = document.querySelector(".name")
 const desc = document.querySelector("#desc")
@@ -12,6 +13,7 @@ const addBtn = document.querySelector(".add_btn")
 const clearBtn = document.querySelector(".clear_btn")
 const deleteAllBtn = document.querySelector(".delete_all_btn")
 const addCategoryBtn = document.querySelector(".add_category_btn")
+const discardCategoryBtn = document.querySelector(".discard_category_btn")
 const deleteBtn = document.getElementsByClassName("delete_btn")
 const editBtn = document.getElementsByClassName("edit_btn")
 const acceptBtn = document.querySelector(".accept_changes_btn")
@@ -20,8 +22,8 @@ const normalBtns = document.querySelectorAll(".normal")
 const specialBtns = document.querySelectorAll(".special")
 const createCategoryBtn = document.querySelector(".create_category_btn")
 //additional variables
-let positionID = 0
-let idToEdit = 1;
+let positionID = 1;
+let idToEdit;
 let categoryValue;
 let selectedValue;
 //price-showing variables
@@ -39,6 +41,9 @@ const addCategory = () => {
     newCategory.setAttribute("value", "1")
     newCategory.innerText = `${newCategoryInput}`
     category.appendChild(newCategory)
+    categoryInput.value = ""
+}
+const discardCategory = () => {
     categoryInput.value = ""
 }
 const addPosition = () => {
@@ -60,7 +65,8 @@ const createPosition = () => {
     const newPosition = document.createElement("tr")
     newPosition.setAttribute("id", positionID)
     newPosition.classList.add("position")
-    newPosition.innerHTML = `            
+    newPosition.innerHTML = `        
+                <td class = "id_category">${positionID}</th>       
                 <td class = "pos_category">${categoryValue}</th>
                 <td class = "pos_name">${name.value}</td>
                 <td class = "pos_desc">${desc.value}</td>
@@ -69,7 +75,7 @@ const createPosition = () => {
                 <td class = "pos_btns">
                     <button class="edit_btn" onClick="editPosition(${positionID})"><i class="fa-solid fa-pen"></i></button>
                     <button class="delete_btn" onClick="deletePosition(${positionID})"><i class="fa-solid fa-trash"></i></button>
-                </td>            
+                </td>             
     `
     positionArea.appendChild(newPosition)
     positionID++ //zmienia ID każdej kolejnej pozycji
@@ -120,6 +126,7 @@ const toggleCategoryCreate = () => {
     categoryInput.classList.toggle("hidden")
     addCategoryBtn.classList.toggle("hidden")
     createCategoryBtn.classList.toggle("hidden")
+    discardCategoryBtn.classList.toggle("hidden")
 
 }
 const editPosition = (positionID) => {
@@ -127,8 +134,12 @@ const editPosition = (positionID) => {
     idToEdit = positionToEdit.getAttribute("id")
     //category
     const categoryToEdit = positionToEdit.querySelector(".pos_category")
+    console.log(categoryToEdit)
     categoryValue = categoryToEdit.textContent
-    category.value = selectedValue
+    console.log(categoryToEdit.textContent)
+    console.log("---")
+    // category.value = selectedValue
+
     //name
     const nameToEdit = positionToEdit.querySelector(".pos_name")
     name.value = nameToEdit.textContent
@@ -170,9 +181,7 @@ const acceptChanges = () => {
     amountChanged.textContent = amount.value
     //price correction
     totalPrice = totalPrice - (editedPrice * editedAmount) + Number(priceChanged.textContent) * Number(amountChanged.textContent)
-    console.log(totalPrice)
     totalAmount = totalAmount - editedAmount + Number(amountChanged.textContent)
-    console.log(totalPrice)
     clearInputs()
     hideButtons()
     showPriceAndAmount()
@@ -182,7 +191,6 @@ const showPriceAndAmount = () => {
     document.getElementById("showedPrice").innerHTML = totalPrice.toFixed(2);
     document.getElementById("showedAmount").innerHTML = totalAmount;
 }
-
 const showNoPosMsg = () => {
     const noPosMsg = document.getElementById("no_positions_msg")
     if (totalAmount == 0) {
@@ -193,14 +201,43 @@ const showNoPosMsg = () => {
     }
 }
 
-showNoPosMsg()
-showPriceAndAmount()
-addBtn.addEventListener("click", addPosition)
-clearBtn.addEventListener("click", clearInputs)
-deleteAllBtn.addEventListener("click", deleteAll)
-acceptBtn.addEventListener("click", acceptChanges)
-discardBtn.addEventListener("click", hideButtons)
-discardBtn.addEventListener("click", clearInputs)
-addCategoryBtn.addEventListener("click", addCategory)
-addCategoryBtn.addEventListener("click", toggleCategoryCreate)
-createCategoryBtn.addEventListener("click", toggleCategoryCreate)
+////////////////////////////
+// $(document).ready(function () {
+//     $('#table_id').DataTable();
+// });
+//
+
+var tables = document.getElementById("table_id"),
+    table,
+    thead,
+    headers,
+    i,
+    j;
+
+for (i = 0; i < tables.length; i++) {
+    table = tables[i];
+
+    if (thead = table.getElementsByTagName("thead")) {
+        headers = thead.getElementsByTagName("th");
+
+        for (j = 0; j < headers.length; j++) {
+            headers[j].innerHTML = "<a href='#'>" + headers[j].innerText + "</a>";
+        }
+
+        thead.addEventListener("click", sortTableFunction(table));
+    }
+}
+
+        showNoPosMsg()
+        showPriceAndAmount()
+        addBtn.addEventListener("click", addPosition)
+        clearBtn.addEventListener("click", clearInputs)
+        deleteAllBtn.addEventListener("click", deleteAll)
+        acceptBtn.addEventListener("click", acceptChanges)
+        discardBtn.addEventListener("click", hideButtons)
+        discardBtn.addEventListener("click", clearInputs)
+        addCategoryBtn.addEventListener("click", addCategory)
+        addCategoryBtn.addEventListener("click", toggleCategoryCreate)
+        createCategoryBtn.addEventListener("click", toggleCategoryCreate)
+        discardCategoryBtn.addEventListener("click", discardCategory)
+        discardCategoryBtn.addEventListener("click", toggleCategoryCreate)

@@ -7,6 +7,14 @@
     background-color: rgb(231, 225, 218);
 }
 
+body {
+    display: flex;
+    justify-content: center;
+}
+
+h1 {
+    text-align: center;
+}
 
 .list_area {
     display: inline-flex;
@@ -39,7 +47,6 @@ th {
     min-width: 100px;
     padding: 5px
 }
-
 table,
 td {
     border-collapse: collapse;
