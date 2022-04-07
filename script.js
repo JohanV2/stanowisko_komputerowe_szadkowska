@@ -8,6 +8,8 @@ const amount = document.querySelector(".amount")
 const categoryInput = document.querySelector(".add_category_input")
 //getting fields
 const positionArea = document.querySelector(".position_area")
+const navArea = document.querySelector(".nav_area")
+const middle = document.querySelector(".middle")
 //getting buttons
 const addBtn = document.querySelector(".add_btn")
 const clearBtn = document.querySelector(".clear_btn")
@@ -26,6 +28,7 @@ let positionID = 1;
 let idToEdit;
 let categoryValue;
 let selectedValue;
+let selectId;
 let row;
 //price-showing variables
 let totalPrice = 0;
@@ -35,18 +38,15 @@ let editedAmount = 0;
 
 //functions
 
-
-
-
-
 const addCategory = () => {
     const newCategoryInput = document.querySelector(".add_category_input").value
-    console.log(newCategoryInput)
-    let newCategory = document.createElement("option")
-    newCategory.setAttribute("value", "1")
-    newCategory.innerText = `${newCategoryInput}`
-    category.appendChild(newCategory)
-    categoryInput.value = ""
+    if (newCategoryInput !== "") {
+        let newCategory = document.createElement("option")
+        newCategory.setAttribute("value", "1")
+        newCategory.innerText = `${newCategoryInput}`
+        category.appendChild(newCategory)
+        categoryInput.value = ""
+    }
 }
 const discardCategory = () => {
     categoryInput.value = ""
@@ -73,6 +73,7 @@ const createPosition = () => {
     newPosition.setAttribute("ondragstart", "dragstart()")
     newPosition.setAttribute("ondragover", "dragover()")
     newPosition.classList.add("position")
+    selectId = category.selectedIndex
     newPosition.innerHTML = `        
                 <td class = "id_category">${positionID}</th>       
                 <td class = "pos_category">${categoryValue}</th>
@@ -83,7 +84,8 @@ const createPosition = () => {
                 <td class = "pos_btns">
                     <button class="edit_btn" onClick="editPosition(${positionID})"><i class="fa-solid fa-pen"></i></button>
                     <button class="delete_btn" onClick="deletePosition(${positionID})"><i class="fa-solid fa-trash"></i></button>
-                </td>             
+                </td>
+                <td class = "select_id hidden">${selectId}</td>        
     `
     positionArea.appendChild(newPosition)
     positionID++ //zmienia ID każdej kolejnej pozycji
@@ -135,15 +137,25 @@ const toggleCategoryCreate = () => {
     addCategoryBtn.classList.toggle("hidden")
     createCategoryBtn.classList.toggle("hidden")
     discardCategoryBtn.classList.toggle("hidden")
+    navArea.classList.toggle("hidden")
+    middle.classList.toggle("hidden")
+    addBtn.classList.toggle("hidden")
+    clearBtn.classList.toggle("hidden")
+    deleteAllBtn.classList.toggle("hidden")
+
 
 }
 const editPosition = (positionID) => {
     let positionToEdit = document.getElementById(positionID)
     idToEdit = positionToEdit.getAttribute("id")
+
     //category
     const categoryToEdit = positionToEdit.querySelector(".pos_category")
     categoryValue = categoryToEdit.textContent
-    category.options[category.selectedIndex].innerHTML = categoryValue
+
+    let categoryId = positionToEdit.querySelector(".select_id")
+    selectId = categoryId.textContent
+    category.selectedIndex = selectId
 
     //name
     const nameToEdit = positionToEdit.querySelector(".pos_name")

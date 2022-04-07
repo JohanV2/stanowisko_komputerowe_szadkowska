@@ -39,6 +39,16 @@ h1 {
     display: none;
 }
 
+table
+{
+    border-collapse: collapse;
+}
+th {
+    border-collapse: collapse;
+    border: 2px solid black;
+}
+
+
 td,
 th {
     hyphens: auto;
@@ -47,19 +57,18 @@ th {
     min-width: 110px;
     padding: 5px;
     text-align: left;
-    border-collapse: collapse;
-    border: 1px solid black;
+    /* border-collapse: separate;
+    border: 1px solid black; */
+
 }
 
-table,
-td {
-    border-collapse: collapse;
-    border: 1px solid black;
 
+td {
+    border: 1px solid black;
 }
 
 table {
-    /* very important to darg and drop to work */
+    /* very important for darg and drop to work */
     user-select: none;
 }
 
