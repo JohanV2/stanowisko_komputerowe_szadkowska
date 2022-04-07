@@ -51,8 +51,9 @@ td {
     min-width: inherit;
 }
 
-.pos_price {
-    text-align: center;
+.pos_price,
+.pos_amount {
+    text-align: right;
 }
 
 .add_btn {

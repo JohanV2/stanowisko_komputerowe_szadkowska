@@ -18,7 +18,7 @@ const acceptBtn = document.querySelector(".accept_changes_btn")
 const discardBtn = document.querySelector(".discard_changes_btn")
 const normalBtns = document.querySelectorAll(".normal")
 const specialBtns = document.querySelectorAll(".special")
-const createCategoryBtn = document.querySelector("create_category_btn")
+const createCategoryBtn = document.querySelector(".create_category_btn")
 //additional variables
 let positionID = 0
 let idToEdit = 1;
@@ -39,9 +39,8 @@ const addCategory = () => {
     newCategory.setAttribute("value", "1")
     newCategory.innerText = `${newCategoryInput}`
     category.appendChild(newCategory)
+    categoryInput.value = ""
 }
-
-
 const addPosition = () => {
     if (category.options[category.selectedIndex].value === "0") {
         alert("Wybierz kategorię!")
@@ -117,6 +116,12 @@ const hideButtons = () => {
         specialBtns[i].classList.toggle("hidden")
     }
 }
+const toggleCategoryCreate = () => {
+    categoryInput.classList.toggle("hidden")
+    addCategoryBtn.classList.toggle("hidden")
+    createCategoryBtn.classList.toggle("hidden")
+
+}
 const editPosition = (positionID) => {
     let positionToEdit = document.getElementById(positionID)
     idToEdit = positionToEdit.getAttribute("id")
@@ -174,7 +179,7 @@ const acceptChanges = () => {
     showNoPosMsg()
 }
 const showPriceAndAmount = () => {
-    document.getElementById("showedPrice").innerHTML = totalPrice;
+    document.getElementById("showedPrice").innerHTML = totalPrice.toFixed(2);
     document.getElementById("showedAmount").innerHTML = totalAmount;
 }
 
@@ -197,3 +202,5 @@ acceptBtn.addEventListener("click", acceptChanges)
 discardBtn.addEventListener("click", hideButtons)
 discardBtn.addEventListener("click", clearInputs)
 addCategoryBtn.addEventListener("click", addCategory)
+addCategoryBtn.addEventListener("click", toggleCategoryCreate)
+createCategoryBtn.addEventListener("click", toggleCategoryCreate)
