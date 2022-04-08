@@ -57,8 +57,7 @@ td,
 th {
     hyphens: auto;
     word-wrap: break-word;
-    max-width: 240px;
-    min-width: 110px;
+    overflow-wrap: break-word;    
     padding: 5px;
     text-align: left;
 }
@@ -75,17 +74,43 @@ table {
 
 th.empty {
     border: 0;
-    min-width: none;
 }
+
+th.id_th,
+th.id_category,
+th.amount_th,
+th.pos_amount {
+    width: 50px
+}
+
+th.category_th,
+th.pos_category {
+    width: 240px
+}
+
+th.price_th,
+th.pos_price {
+    width: 100px
+}
+
+th.name_th,
+th.name_pos {
+    width: 300px;
+    max-width: 300px;
+    word-break: break-all
+}
+
+th.desc_th,
+th.desc_pos {
+    width: 250px;
+    max-width: 250px;
+    word-break: break-all
+}
+
 
 tr.position {
     cursor: move;
 }
-
-.price_th {
-    width: 210px;
-}
-
 
 .pos_btns {
     border: 0;
