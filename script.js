@@ -146,22 +146,16 @@ const toggleCategoryCreate = () => {
     addBtn.classList.toggle("hidden")
     clearBtn.classList.toggle("hidden")
     deleteAllBtn.classList.toggle("hidden")
-    try {
-        let editBtns = document.getElementsByClassName("edit_btn")
-        for (let i = 0; editBtns.length; i++) {
-            editBtns[i].classList.toggle("hidden")
-        }
-    } catch (error) {
-        console.error(`catched ${error}`)
+    let editBtns = document.getElementsByClassName("edit_btn")
+    for (let i = 0; i < editBtns.length; i++) {
+        editBtns[i].classList.toggle("hidden")
     }
-    try {
-        let deleteBtns = document.getElementsByClassName("delete_btn")
-        for (let j = 0; deleteBtns.length; j++) {
-            deleteBtns[j].classList.toggle("hidden")
-        }
-    } catch (error) {
-        console.error(`catched ${error}`)
+    let deleteBtns = document.getElementsByClassName("delete_btn")
+
+    for (let i = 0; i < deleteBtns.length; i++) {
+        deleteBtns[i].classList.toggle("hidden")
     }
+
 
 
 

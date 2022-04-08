@@ -35,6 +35,33 @@ h1 {
     align-content: flex-start;
 }
 
+.additional_menu {
+    border: 2px solid red;
+}
+
+.btn_up {
+    border: 2px solid rgb(121, 216, 245);
+    padding: 5px 20px;
+    display: flex;
+    justify-content: center;
+
+}
+
+.btn_middle {
+    border: 2px solid greenyellow;
+    padding: 5px 20px;
+    display: flex;
+    justify-content: center;
+}
+
+.btn_down {
+    border: 2px solid rgb(232, 210, 16);
+    padding: 5px 20px;
+    display: flex;
+    justify-content: center;
+}
+
+
 .header_table_area {
     margin-top: 30px;
 }
@@ -57,7 +84,7 @@ td,
 th {
     hyphens: auto;
     word-wrap: break-word;
-    overflow-wrap: break-word;    
+    overflow-wrap: break-word;
     padding: 5px;
     text-align: left;
 }
@@ -147,7 +174,10 @@ button,
 
 .create_category_btn {
     background-color: rgb(227, 227, 152);
+
 }
+
+.delete_all_btn {}
 
 #no_positions_msg {
     color: rgb(205, 53, 53);
@@ -161,6 +191,10 @@ button,
 .header_table_area {
     display: inline-block;
     margin-right: 20px;
+}
+
+#print_btn {
+    font-size: 20px;
 }
 
 /* printing */
