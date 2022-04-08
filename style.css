@@ -34,7 +34,9 @@ h1 {
     align-items: stretch;
     align-content: flex-start;
 }
-
+.header_table_area {
+    margin-top: 30px;
+}
 .hidden {
     display: none;
 }
@@ -57,9 +59,6 @@ th {
     min-width: 110px;
     padding: 5px;
     text-align: left;
-    /* border-collapse: separate;
-    border: 1px solid black; */
-
 }
 
 
@@ -72,6 +71,11 @@ table {
     user-select: none;
 }
 
+th.empty {
+    border: 0;
+    min-width: none;
+}
+
 tr.position {
     cursor: move;
 }
@@ -81,7 +85,8 @@ tr.position {
 }
 
 .pos_btns {
-    min-width: inherit;
+    border: 0;
+    text-align: left;
 }
 
 .pos_price,
@@ -111,7 +116,8 @@ button,
 .edit_btn {
     color: rgb(69, 55, 27);
 }
-.create_category_btn{
+
+.create_category_btn {
     background-color: rgb(227, 227, 152);
 }
 
