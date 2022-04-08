@@ -253,7 +253,6 @@ function dragover() {
         e.target.parentNode.before(row);
 }
 
-
 /////////////////////////////////////////////////
 showNoPosMsg()
 showPriceAndAmount()

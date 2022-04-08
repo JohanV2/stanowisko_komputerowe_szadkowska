@@ -14,9 +14,11 @@
 
 <body>
     <div class="wrapper">
-        <h1>Stanowisko komputerowe</h1>
-        <h2>Suma kosztów: <span id="showedPrice"></span>zł</h2>
-        <h2>Ilość pozycji: <span id="showedAmount"></span></h2>
+        <div id="head">
+            <h1>Stanowisko komputerowe</h1>
+            <h2>Suma kosztów: <span id="showedPrice"></span>zł</h2>
+            <h2>Ilość pozycji: <span id="showedAmount"></span></h2>
+        </div>
 
 
         <div class="up">
@@ -60,7 +62,8 @@
                 <button class="delete_all_btn normal">Usuń wszystko</button>
                 <button class="accept_changes_btn special hidden">akceptuj zmiany</button>
                 <button class="discard_changes_btn special hidden">odrzuć zmiany</button>
-                <input type="text" class="add_category_input hidden" placeholder="wpisz nazwę nowej kategorii">
+                <input type="text" class="add_category_input hidden" maxlength="20"
+                    placeholder="wpisz nazwę nowej kategorii">
                 <button class="add_category_btn  hidden">Dodaj kategorię</button>
                 <button class="discard_category_btn  hidden">Odrzuć</button>
                 <button class="create_category_btn normal category_creation">Stwórz nową kategorię</button>
@@ -81,7 +84,7 @@
             <!-- <input type="text" placeholder="Filtruj..." class="filter_input" onkeyup="filterAndHightlight()">
             <span class="clearFilter" onclick="clearFilter()">×</span> -->
             <p class="header_table_area">Lista pozycji:</p>
-            <button onclick="generatePDF()">PDF</button>
+            <button onclick="window.print()" id="print_btn"><i class="fa-solid fa-print"></i></button>
             <table class="sortable" id="table_id">
                 <thead>
                     <tr>

@@ -57,7 +57,7 @@ td,
 th {
     hyphens: auto;
     word-wrap: break-word;
-    max-width: 350px;
+    max-width: 240px;
     min-width: 110px;
     padding: 5px;
     text-align: left;
@@ -131,4 +131,39 @@ button,
 
 .down {
     width: fit-content
+}
+
+.header_table_area {
+    display: inline-block;
+    margin-right: 20px;
+}
+
+/* printing */
+@media print {
+    body {
+        display: flex;
+        flex-direction: row;
+    }
+
+    .up,
+    .middle,
+    .header_table_area,
+    #print_btn,
+    .edit_btn,
+    .delete_btn {
+        display: none;
+    }
+
+    h2,
+    span,
+    #table_id * {
+        background-color: white;
+    }
+
+    h1,
+    h2,
+    span {
+        font-size: 20px;
+    }
+
 }
