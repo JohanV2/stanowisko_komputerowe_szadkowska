@@ -90,7 +90,8 @@ const createPosition = () => {
     positionArea.appendChild(newPosition)
     positionID++ //zmienia ID każdej kolejnej pozycji
     totalPrice = totalPrice + Number(price.value) * Number(amount.value)
-    totalAmount = totalAmount + Number(amount.value)
+    // totalAmount = totalAmount + Number(amount.value)
+    totalAmount += 1
     showPriceAndAmount()
     showNoPosMsg()
 }
@@ -120,7 +121,8 @@ const deletePosition = (positionID) => {
     const deletedPrice = positionNotWanted.querySelector(".pos_price")
     const deletedAmount = positionNotWanted.querySelector(".pos_amount")
     totalPrice = totalPrice - Number(deletedPrice.textContent) * Number(deletedAmount.textContent);
-    totalAmount = totalAmount - Number(deletedAmount.textContent);
+    // totalAmount = totalAmount - Number(deletedAmount.textContent);
+    totalAmount -= 1
     showPriceAndAmount()
     showNoPosMsg()
     hideButtons()

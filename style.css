@@ -34,9 +34,11 @@ h1 {
     align-items: stretch;
     align-content: flex-start;
 }
+
 .header_table_area {
     margin-top: 30px;
 }
+
 .hidden {
     display: none;
 }
@@ -83,6 +85,7 @@ tr.position {
 .price_th {
     width: 210px;
 }
+
 
 .pos_btns {
     border: 0;

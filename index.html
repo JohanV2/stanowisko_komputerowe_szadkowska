@@ -7,6 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Stanowisko komputerowe</title>
     <script src="https://kit.fontawesome.com/5cf5e2b947.js" crossorigin="anonymous"></script>
+
+    <script src="export_pdf.js"></script>
     <link rel="stylesheet" href="style.css">
 </head>
 
@@ -79,6 +81,7 @@
             <!-- <input type="text" placeholder="Filtruj..." class="filter_input" onkeyup="filterAndHightlight()">
             <span class="clearFilter" onclick="clearFilter()">×</span> -->
             <p class="header_table_area">Lista pozycji:</p>
+            <button onclick="generatePDF()">PDF</button>
             <table class="sortable" id="table_id">
                 <thead>
                     <tr>
@@ -88,7 +91,7 @@
                         <th>Opis</th>
                         <th>Ilość</th>
                         <th class="price_th">Cena jednostkowa (zł)</th>
-                        <th class = "empty"></th>
+                        <th class="empty"></th>
                     </tr>
                 </thead>
                 <tbody class="position_area">
@@ -100,6 +103,7 @@
 
     </div>
     <script src="script.js"></script>
+
 </body>
 
 </html>
