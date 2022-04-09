@@ -307,7 +307,9 @@ function filterName() {
         if (td) {
             txtValue = td.textContent || td.innerText;
             if (txtValue.toUpperCase().indexOf(filter) > -1) {
-                tr[i].style.display = ""
+                if (tr[i].style.display == "") {
+                    tr[i].style.display = ""
+                }
             } else {
                 tr[i].style.display = "none"
             }
@@ -339,7 +341,7 @@ function filterCategory() {
 }
 const clearFilters = () => {
 
-    var filter, tr, td, txtValue
+    var tr, td
 
     table = document.getElementById("table_id")
     tr = table.getElementsByClassName("position")
