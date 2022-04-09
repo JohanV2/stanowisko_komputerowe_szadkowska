@@ -300,7 +300,7 @@ var filter_name = ""
 var filter_category = ""
 
 function filterName() {
-    let filter, table, tr, td, txtValue
+    let filter, table, tr, td, txtValue, td_cat
     filter_name = filterNameInput.value.toUpperCase()
     console.log("filter_name", filter_name)
     table = document.getElementById("table_id")
@@ -330,11 +330,11 @@ function filterName() {
     }
 }
 function filterCategory() {
-    let select, filter, table, tr, td, txtValue, categoryValueFilter, selectedValueFilter
+    let select, filter, table, tr, td, txtValue, categoryValueFilter, selectedValueFilter, td_cat
     select = document.getElementById("filter_category_input")
 
     categoryValueFilter = filterCategoryInput.options[filterCategoryInput.selectedIndex].text
-    selectedValueFilter = filterCategoryInput.value
+    // selectedValueFilter = filterCategoryInput.value
     if (categoryValueFilter != "-- wybierz kategorię produktu --") {
         filter_category = categoryValueFilter.toUpperCase()
     } else {
@@ -364,11 +364,6 @@ function filterCategory() {
             }
         }
     }
-}
-
-const filter = () => {
-    filterCategory()
-    filterName()
 }
 
 
