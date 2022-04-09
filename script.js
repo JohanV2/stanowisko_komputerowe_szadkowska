@@ -296,26 +296,8 @@ function sortTable(n) {
         }
     }
 }
-function filterName() {
-    var filter, table, tr, td, txtValue
-    filter = filterNameInput.value.toUpperCase()
-    table = document.getElementById("table_id")
-    tr = table.getElementsByClassName("position")
 
-    for (let i = 0; i < tr.length; i++) {
-        td = tr[i].getElementsByTagName("td")[2]
-        if (td) {
-            txtValue = td.textContent || td.innerText;
-            if (txtValue.toUpperCase().indexOf(filter) > -1) {
-                if (tr[i].style.display == "") {
-                    tr[i].style.display = ""
-                }
-            } else {
-                tr[i].style.display = "none"
-            }
-        }
-    }
-}
+
 function filterCategory() {
     var select, filter, table, tr, td, txtValue, categoryValueFilter, selectedValueFilter
     select = document.getElementById("filter_category_input")
@@ -332,9 +314,32 @@ function filterCategory() {
         if (td) {
             txtValue = td.textContent || td.innerText;
             if (txtValue.toUpperCase().indexOf(filter) > -1) {
+
                 tr[i].style.display = ""
+
             } else {
                 tr[i].style.display = "none"
+            }
+        }
+    }
+}
+function filterName() {
+    // Declare variables
+    var input, filter, table, tr, td, i, txtValue;
+    input = document.getElementById("filter_name_input");
+    filter = input.value.toUpperCase();
+    table = document.getElementById("table_id");
+    tr = table.getElementsByTagName("tr");
+
+    // Loop through all table rows, and hide those who don't match the search query
+    for (i = 0; i < tr.length; i++) {
+        td = tr[i].getElementsByTagName("td")[0];
+        if (td) {
+            txtValue = td.textContent || td.innerText;
+            if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                tr[i].style.display = "";
+            } else {
+                tr[i].style.display = "none";
             }
         }
     }
