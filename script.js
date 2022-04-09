@@ -82,8 +82,8 @@ const createPosition = () => {
                 <td class = "pos_amount">${amount.value}</td>
                 <td class = "pos_price">${price.value}</td>
                 <td class = "pos_btns">
-                    <button class="edit_btn" onClick="editPosition(${positionID})"><i class="fa-solid fa-pen"></i></button>
-                    <button class="delete_btn" onClick="deletePosition(${positionID})"><i class="fa-solid fa-trash"></i></button>
+                    <button class="edit_btn" onClick="editPosition(${positionID})" title="edytuj pozycję"><i class="fa-solid fa-pen"></i></button>
+                    <button class="delete_btn" onClick="deletePosition(${positionID})" title="usuń pozycję"><i class="fa-solid fa-trash"></i></button>
                 </td>
                 <td class = "select_id hidden">${selectId}</td>        
     `
@@ -122,7 +122,7 @@ const deletePosition = (positionID) => {
     const deletedAmount = positionNotWanted.querySelector(".pos_amount")
     totalPrice = totalPrice - Number(deletedPrice.textContent) * Number(deletedAmount.textContent);
     // totalAmount = totalAmount - Number(deletedAmount.textContent);
-    totalAmount --
+    totalAmount--
     showPriceAndAmount()
     showNoPosMsg()
     hideButtonsWhileDelete()
@@ -252,6 +252,42 @@ function dragover() {
         e.target.parentNode.before(row);
 }
 
+function sortTable(n) {
+    var table, rows, switching, i, x, y, shouldSwitch, dir, switchcount = 0
+    table = document.getElementById("table_id")
+    switching = true
+    dir = "asc"
+    while (switching) {
+        switching = false
+        rows = table.rows
+        for (i = 1; i < (rows.length - 1); i++) {
+            shouldSwitch = false
+            x = rows[i].getElementsByTagName("td")[n]
+            y = rows[i + 1].getElementsByTagName("td")[n]
+            if (dir == "asc") {
+                if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
+                    shouldSwitch = true
+                    break
+                }
+            } else if (dir == "desc") {
+                if (x.innerHTML.toLowerCase() < y.innerHTML.toLowerCase()) {
+                    shouldSwitch = true
+                    break
+                }
+            }
+        }
+        if (shouldSwitch) {
+            rows[i].parentNode.insertBefore(rows[i + 1], rows[i])
+            switching = true
+            switchcount++
+        } else {
+            if (switchcount == 0 && dir == "asc") {
+                dir = "desc"
+                switching = true
+            }
+        }
+    }
+}
 /////////////////////////////////////////////////
 showNoPosMsg()
 showPriceAndAmount()
