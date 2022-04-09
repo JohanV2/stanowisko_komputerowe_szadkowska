@@ -122,10 +122,10 @@ const deletePosition = (positionID) => {
     const deletedAmount = positionNotWanted.querySelector(".pos_amount")
     totalPrice = totalPrice - Number(deletedPrice.textContent) * Number(deletedAmount.textContent);
     // totalAmount = totalAmount - Number(deletedAmount.textContent);
-    totalAmount -= 1
+    totalAmount --
     showPriceAndAmount()
     showNoPosMsg()
-    hideButtons()
+    hideButtonsWhileDelete()
     clearInputs()
 }
 const hideButtons = () => {
@@ -134,6 +134,11 @@ const hideButtons = () => {
     }
     for (let i = 0; i < specialBtns.length; i++) {
         specialBtns[i].classList.toggle("hidden")
+    }
+}
+const hideButtonsWhileDelete = () => {
+    for (let i = 0; i < specialBtns.length; i++) {
+        specialBtns[i].classList.add("hidden")
     }
 }
 const toggleCategoryCreate = () => {

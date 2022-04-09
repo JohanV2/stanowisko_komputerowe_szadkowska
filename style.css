@@ -36,11 +36,11 @@ h1 {
 }
 
 .additional_menu {
-    border: 2px solid red;
+    /* border: 2px solid red; */
 }
 
 .btn_up {
-    border: 2px solid rgb(121, 216, 245);
+    /* border: 2px solid rgb(121, 216, 245); */
     padding: 5px 20px;
     display: flex;
     justify-content: center;
@@ -48,14 +48,14 @@ h1 {
 }
 
 .btn_middle {
-    border: 2px solid greenyellow;
+    /* border: 2px solid greenyellow; */
     padding: 5px 20px;
     display: flex;
     justify-content: center;
 }
 
 .btn_down {
-    border: 2px solid rgb(232, 210, 16);
+    /* border: 2px solid rgb(232, 210, 16); */
     padding: 5px 20px;
     display: flex;
     justify-content: center;
@@ -82,7 +82,6 @@ th {
 
 td,
 th {
-    hyphens: auto;
     word-wrap: break-word;
     overflow-wrap: break-word;
     padding: 5px;
@@ -91,6 +90,7 @@ th {
 
 
 td {
+    word-break: break-word;
     border: 1px solid black;
 }
 
@@ -131,7 +131,6 @@ th.desc_th,
 th.desc_pos {
     width: 250px;
     max-width: 250px;
-    word-break: break-all
 }
 
 
