@@ -6,6 +6,7 @@ const desc = document.querySelector("#desc")
 const price = document.querySelector(".price")
 const amount = document.querySelector(".amount")
 const categoryInput = document.querySelector(".add_category_input")
+const filterNameInput = document.getElementById("filter_name_input")
 
 //getting fields
 const positionArea = document.querySelector(".position_area")
@@ -24,6 +25,7 @@ const discardBtn = document.querySelector(".discard_changes_btn")
 const normalBtns = document.querySelectorAll(".normal")
 const specialBtns = document.querySelectorAll(".special")
 const createCategoryBtn = document.querySelector(".create_category_btn")
+const clearFiltersBtn = document.querySelector(".clear_filters_btn")
 //filter category
 const divFilter = document.querySelector(".filter_category_div")
 const filterCategoryInput = category.cloneNode(true)
@@ -295,9 +297,8 @@ function sortTable(n) {
     }
 }
 function filterName() {
-    var input, filter, table, tr, td, txtValue
-    input = document.getElementById("filter_name_input")
-    filter = input.value.toUpperCase()
+    var filter, table, tr, td, txtValue
+    filter = filterNameInput.value.toUpperCase()
     table = document.getElementById("table_id")
     tr = table.getElementsByClassName("position")
 
@@ -320,8 +321,6 @@ function filterCategory() {
     categoryValueFilter = filterCategoryInput.options[filterCategoryInput.selectedIndex].text
     selectedValueFilter = filterCategoryInput.value
 
-
-
     filter = categoryValueFilter.toUpperCase()
     table = document.getElementById("table_id")
     tr = table.getElementsByClassName("position")
@@ -338,6 +337,21 @@ function filterCategory() {
         }
     }
 }
+const clearFilters = () => {
+
+    var filter, tr, td, txtValue
+
+    table = document.getElementById("table_id")
+    tr = table.getElementsByClassName("position")
+    for (let i = 0; i < tr.length; i++) {
+        td = tr[i].getElementsByTagName("td")
+        tr[i].style.display = ""
+    }
+
+    filterCategoryInput.selectedIndex = 0
+    filterNameInput.value = ""
+
+}
 /////////////////////////////////////////////////
 showNoPosMsg()
 showPriceAndAmount()
@@ -353,3 +367,4 @@ addCategoryBtn.addEventListener("click", toggleCategoryCreate)
 createCategoryBtn.addEventListener("click", toggleCategoryCreate)
 discardCategoryBtn.addEventListener("click", discardCategory)
 discardCategoryBtn.addEventListener("click", toggleCategoryCreate)
+clearFiltersBtn.addEventListener("click", clearFilters)
