@@ -30,12 +30,8 @@ const clearFiltersBtn = document.querySelector(".clear_filters_btn")
 const divFilter = document.querySelector(".filter_category_div")
 const filterCategoryInput = category.cloneNode(true)
 filterCategoryInput.id = "filter_category_input"
-filterCategoryInput.setAttribute("class", "filter_enabled hidden")
 filterCategoryInput.setAttribute("onchange", "filterCategory()")
 divFilter.appendChild(filterCategoryInput)
-//additional getting
-const filterDisabled = querySelectorAll(".filter_disabled")
-const filterEnabled = querySelectorAll(".filter_enabled")
 //additional variables
 let positionID = 1;
 let idToEdit, categoryValue, selectedValue, selectId, row;
@@ -300,24 +296,66 @@ function sortTable(n) {
         }
     }
 }
+var filter_name = ""
+var filter_category = ""
 
-
-function filterCategory() {
-    var select, filter, table, tr, td, txtValue, categoryValueFilter, selectedValueFilter
-    select = document.getElementById("filter_category_input")
-
-    categoryValueFilter = filterCategoryInput.options[filterCategoryInput.selectedIndex].text
-    selectedValueFilter = filterCategoryInput.value
-
-    filter = categoryValueFilter.toUpperCase()
+function filterName() {
+    let filter, table, tr, td, txtValue
+    filter_name = filterNameInput.value.toUpperCase()
+    console.log("filter_name", filter_name)
     table = document.getElementById("table_id")
     tr = table.getElementsByClassName("position")
 
     for (let i = 0; i < tr.length; i++) {
-        td = tr[i].getElementsByTagName("td")[1]
+        td = tr[i].getElementsByTagName("td")[2]
+        td_cat = tr[i].getElementsByTagName("td")[1]
         if (td) {
             txtValue = td.textContent || td.innerText;
-            if (txtValue.toUpperCase().indexOf(filter) > -1) {
+            console.log("txt", txtValue)
+            console.log("filtercat", filter_category)
+            txtValue_cat = td_cat.textContent || td_cat.innerText
+            if (txtValue.toUpperCase().includes(filter_name)
+                && txtValue_cat.toUpperCase().includes(filter_category)) {
+
+                // if (filter_category !== null) {
+                //     filterCategory()
+                // }
+                tr[i].style.display = ""
+
+
+            } else {
+                tr[i].style.display = "none"
+            }
+        }
+    }
+}
+function filterCategory() {
+    let select, filter, table, tr, td, txtValue, categoryValueFilter, selectedValueFilter
+    select = document.getElementById("filter_category_input")
+
+    categoryValueFilter = filterCategoryInput.options[filterCategoryInput.selectedIndex].text
+    selectedValueFilter = filterCategoryInput.value
+    if (categoryValueFilter != "-- wybierz kategorię produktu --") {
+        filter_category = categoryValueFilter.toUpperCase()
+    } else {
+        filter_category = ""
+    }
+    console.log("filter_category", filter_category)
+    table = document.getElementById("table_id")
+    tr = table.getElementsByClassName("position")
+
+    for (let i = 0; i < tr.length; i++) {
+        td = tr[i].getElementsByTagName("td")[2]
+        td_cat = tr[i].getElementsByTagName("td")[1]
+        if (td) {
+            txtValue = td.textContent || td.innerText;
+            txtValue_cat = td_cat.textContent || td_cat.innerText
+            if (txtValue.toUpperCase().includes(filter_name) && txtValue_cat.toUpperCase().includes(filter_category)) {
+
+                // if (filter_name !== null) {
+                //     filterName()
+                // }
+                console.log("display_category", tr[i].style.display)
 
                 tr[i].style.display = ""
 
@@ -327,27 +365,14 @@ function filterCategory() {
         }
     }
 }
-function filterName() {
-    // Declare variables
-    var input, filter, table, tr, td, i, txtValue;
-    input = document.getElementById("filter_name_input");
-    filter = input.value.toUpperCase();
-    table = document.getElementById("table_id");
-    tr = table.getElementsByTagName("tr");
 
-    // Loop through all table rows, and hide those who don't match the search query
-    for (i = 0; i < tr.length; i++) {
-        td = tr[i].getElementsByTagName("td")[0];
-        if (td) {
-            txtValue = td.textContent || td.innerText;
-            if (txtValue.toUpperCase().indexOf(filter) > -1) {
-                tr[i].style.display = "";
-            } else {
-                tr[i].style.display = "none";
-            }
-        }
-    }
+const filter = () => {
+    filterCategory()
+    filterName()
 }
+
+
+
 const clearFilters = () => {
 
     var tr, td
@@ -362,14 +387,6 @@ const clearFilters = () => {
     filterCategoryInput.selectedIndex = 0
     filterNameInput.value = ""
 
-}
-const toggleFilter = () => {
-    for (let i = 0; i < filterDisabled.length; i++) {
-        filterDisabled[i].classList.toggle("hidden")
-    }
-    for (let i = 0; i < filterEnabled.length; i++) {
-        filterEnabled[i].classList.toggle("hidden")
-    }
 }
 /////////////////////////////////////////////////
 showNoPosMsg()
