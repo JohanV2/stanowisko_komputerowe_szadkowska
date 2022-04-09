@@ -149,7 +149,8 @@ tr.position {
 }
 
 button,
-#category {
+#category,
+.header {
     cursor: pointer;
 }
 

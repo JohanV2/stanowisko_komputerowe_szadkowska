@@ -6,6 +6,7 @@ const desc = document.querySelector("#desc")
 const price = document.querySelector(".price")
 const amount = document.querySelector(".amount")
 const categoryInput = document.querySelector(".add_category_input")
+
 //getting fields
 const positionArea = document.querySelector(".position_area")
 const navArea = document.querySelector(".nav_area")
@@ -23,13 +24,14 @@ const discardBtn = document.querySelector(".discard_changes_btn")
 const normalBtns = document.querySelectorAll(".normal")
 const specialBtns = document.querySelectorAll(".special")
 const createCategoryBtn = document.querySelector(".create_category_btn")
+//filter category
+const divFilter = document.querySelector(".filter_category_div")
+const filterCategoryInput = category.cloneNode(true)
+filterCategoryInput.id = "filter_category_input"
+divFilter.appendChild(filterCategoryInput)
 //additional variables
 let positionID = 1;
-let idToEdit;
-let categoryValue;
-let selectedValue;
-let selectId;
-let row;
+let idToEdit, categoryValue, selectedValue, selectId, row;
 //price-showing variables
 let totalPrice = 0;
 let editedPrice = 0;
@@ -46,6 +48,9 @@ const addCategory = () => {
         newCategory.innerText = `${newCategoryInput}`
         category.appendChild(newCategory)
         categoryInput.value = ""
+        //clone to category filter
+        let newCategoryClone = newCategory.cloneNode(true)
+        filterCategoryInput.appendChild(newCategoryClone)
     }
 }
 const discardCategory = () => {
@@ -288,9 +293,33 @@ function sortTable(n) {
         }
     }
 }
+function filterName() {
+    var input, filter, table, tr, td, txtValue;
+    input = document.getElementById("filter_name_input");
+    filter = input.value.toUpperCase();
+    table = document.getElementById("table_id");
+    tr = table.getElementsByClassName("position");
+
+    for (let i = 0; i < tr.length; i++) {
+        td = tr[i].getElementsByTagName("td")[2];
+        if (td) {
+            txtValue = td.textContent || td.innerText;
+            if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                tr[i].style.display = "";
+            } else {
+                tr[i].style.display = "none";
+            }
+        }
+    }
+}
+function filterCategory() {
+
+
+}
 /////////////////////////////////////////////////
 showNoPosMsg()
 showPriceAndAmount()
+filterCategory()
 addBtn.addEventListener("click", addPosition)
 clearBtn.addEventListener("click", clearInputs)
 deleteAllBtn.addEventListener("click", deleteAll)
