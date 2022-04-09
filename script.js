@@ -30,8 +30,12 @@ const clearFiltersBtn = document.querySelector(".clear_filters_btn")
 const divFilter = document.querySelector(".filter_category_div")
 const filterCategoryInput = category.cloneNode(true)
 filterCategoryInput.id = "filter_category_input"
+filterCategoryInput.setAttribute("class", "filter_enabled hidden")
 filterCategoryInput.setAttribute("onchange", "filterCategory()")
 divFilter.appendChild(filterCategoryInput)
+//additional getting
+const filterDisabled = querySelectorAll(".filter_disabled")
+const filterEnabled = querySelectorAll(".filter_enabled")
 //additional variables
 let positionID = 1;
 let idToEdit, categoryValue, selectedValue, selectId, row;
@@ -358,6 +362,14 @@ const clearFilters = () => {
     filterCategoryInput.selectedIndex = 0
     filterNameInput.value = ""
 
+}
+const toggleFilter = () => {
+    for (let i = 0; i < filterDisabled.length; i++) {
+        filterDisabled[i].classList.toggle("hidden")
+    }
+    for (let i = 0; i < filterEnabled.length; i++) {
+        filterEnabled[i].classList.toggle("hidden")
+    }
 }
 /////////////////////////////////////////////////
 showNoPosMsg()
