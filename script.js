@@ -28,6 +28,7 @@ const createCategoryBtn = document.querySelector(".create_category_btn")
 const divFilter = document.querySelector(".filter_category_div")
 const filterCategoryInput = category.cloneNode(true)
 filterCategoryInput.id = "filter_category_input"
+filterCategoryInput.setAttribute("onkeyup", "filterCategory()")
 divFilter.appendChild(filterCategoryInput)
 //additional variables
 let positionID = 1;

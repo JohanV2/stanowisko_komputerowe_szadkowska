@@ -43,15 +43,14 @@ h1 {
     /* border: 2px solid rgb(121, 216, 245); */
     padding: 5px 20px;
     display: flex;
-    justify-content: center;
-
+    justify-content: space-between
 }
 
 .btn_middle {
     /* border: 2px solid greenyellow; */
     padding: 5px 20px;
     display: flex;
-    justify-content: center;
+    justify-content: left;
 }
 
 .btn_down {
@@ -61,6 +60,14 @@ h1 {
     justify-content: center;
 }
 
+.delete_all_btn {
+    width: 100%
+}
+
+.add_btn,
+.clear_btn {
+    width: 47%
+}
 
 .header_table_area {
     margin-top: 30px;
@@ -177,7 +184,6 @@ button,
 
 }
 
-.delete_all_btn {}
 
 #no_positions_msg {
     color: rgb(205, 53, 53);
