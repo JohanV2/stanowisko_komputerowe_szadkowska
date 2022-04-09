@@ -28,7 +28,7 @@ const createCategoryBtn = document.querySelector(".create_category_btn")
 const divFilter = document.querySelector(".filter_category_div")
 const filterCategoryInput = category.cloneNode(true)
 filterCategoryInput.id = "filter_category_input"
-filterCategoryInput.setAttribute("onkeyup", "filterCategory()")
+filterCategoryInput.setAttribute("onchange", "filterCategory()")
 divFilter.appendChild(filterCategoryInput)
 //additional variables
 let positionID = 1;
@@ -295,27 +295,48 @@ function sortTable(n) {
     }
 }
 function filterName() {
-    var input, filter, table, tr, td, txtValue;
-    input = document.getElementById("filter_name_input");
-    filter = input.value.toUpperCase();
-    table = document.getElementById("table_id");
-    tr = table.getElementsByClassName("position");
+    var input, filter, table, tr, td, txtValue
+    input = document.getElementById("filter_name_input")
+    filter = input.value.toUpperCase()
+    table = document.getElementById("table_id")
+    tr = table.getElementsByClassName("position")
 
     for (let i = 0; i < tr.length; i++) {
-        td = tr[i].getElementsByTagName("td")[2];
+        td = tr[i].getElementsByTagName("td")[2]
         if (td) {
             txtValue = td.textContent || td.innerText;
             if (txtValue.toUpperCase().indexOf(filter) > -1) {
-                tr[i].style.display = "";
+                tr[i].style.display = ""
             } else {
-                tr[i].style.display = "none";
+                tr[i].style.display = "none"
             }
         }
     }
 }
 function filterCategory() {
+    var select, filter, table, tr, td, txtValue, categoryValueFilter, selectedValueFilter
+    select = document.getElementById("filter_category_input")
+
+    categoryValueFilter = filterCategoryInput.options[filterCategoryInput.selectedIndex].text
+    selectedValueFilter = filterCategoryInput.value
 
 
+
+    filter = categoryValueFilter.toUpperCase()
+    table = document.getElementById("table_id")
+    tr = table.getElementsByClassName("position")
+
+    for (let i = 0; i < tr.length; i++) {
+        td = tr[i].getElementsByTagName("td")[1]
+        if (td) {
+            txtValue = td.textContent || td.innerText;
+            if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                tr[i].style.display = ""
+            } else {
+                tr[i].style.display = "none"
+            }
+        }
+    }
 }
 /////////////////////////////////////////////////
 showNoPosMsg()

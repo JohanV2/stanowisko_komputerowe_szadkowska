@@ -88,8 +88,8 @@
             <p class="header_table_area">Lista pozycji:</p>
             <button onclick="window.print()" id="print_btn" title="drukuj / zapisz jako PDF"><i
                     class="fa-solid fa-print"></i>/<i class="fa-regular fa-file-pdf"></i></button>
-                    <div class="filter_category_div"></div>
-                    <input type="text" id="filter_name_input" onkeyup="filterName()">
+            <div class="filter_category_div"></div>
+            <input type="text" id="filter_name_input" onkeyup="filterName()" placeholder="filtruj po nazwie...">
             <table class="table" id="table_id">
                 <thead>
                     <tr>
@@ -98,7 +98,8 @@
                         <th class="name_th header" onclick="sortTable(2)" title="sortuj po nazwie">Nazwa</th>
                         <th class="desc_th header" onclick="sortTable(3)" title="sortuj po opisie">Opis</th>
                         <th class="amount_th header" onclick="sortTable(4)" title="sortuj po liczbie pozycji">Ilość</th>
-                        <th class="price_th header" onclick="sortTable(5)" title="sortuj po cenie jednostkowej">Cena j. (zł)
+                        <th class="price_th header" onclick="sortTable(5)" title="sortuj po cenie jednostkowej">Cena j.
+                            (zł)
                         </th>
                         <th class="empty"></th>
                     </tr>
