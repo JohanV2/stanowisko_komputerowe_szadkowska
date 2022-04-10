@@ -30,7 +30,6 @@ const clearFiltersBtn = document.querySelector(".clear_filters_btn")
 const divFilter = document.querySelector(".filter_category_div")
 const filterCategoryInput = category.cloneNode(true)
 filterCategoryInput.options[filterCategoryInput.selectedIndex].text = "filtruj po kategorii... "
-console.log(filterCategoryInput)
 filterCategoryInput.id = "filter_category_input"
 filterCategoryInput.setAttribute("onchange", "filterCategory()")
 divFilter.appendChild(filterCategoryInput)
@@ -151,7 +150,6 @@ const hideButtonsWhileDelete = () => {
         specialBtns[i].classList.add("hidden")
     }
 }
-
 const hideButtonsWhileEdit = () => {
     for (let i = 0; i < editBtn.length; i++) {
         editBtn[i].classList.toggle("hidden")
@@ -263,7 +261,6 @@ function dragover() {
     else
         e.target.parentNode.before(row);
 }
-
 function sortTable(n) {
     var table, rows, switching, i, x, y, shouldSwitch, dir, switchcount = 0
     table = document.getElementById("table_id")
@@ -300,53 +297,47 @@ function sortTable(n) {
         }
     }
 }
+let filteredPrice = 0
 var filter_name = ""
 var filter_category = ""
 function filterName() {
-    let filter, table, tr, td, txtValue, td_cat
+    let table, tr, td, txtValue, td_cat
     filter_name = filterNameInput.value.toUpperCase()
-    console.log("filter_name", filter_name)
     table = document.getElementById("table_id")
     tr = table.getElementsByClassName("position")
-
+    filteredPrice = 0
     for (let i = 0; i < tr.length; i++) {
         td = tr[i].getElementsByTagName("td")[2]
         td_cat = tr[i].getElementsByTagName("td")[1]
         if (td) {
             txtValue = td.textContent || td.innerText;
-            console.log("txt", txtValue)
-            console.log("filtercat", filter_category)
             txtValue_cat = td_cat.textContent || td_cat.innerText
             if (txtValue.toUpperCase().includes(filter_name)
                 && txtValue_cat.toUpperCase().includes(filter_category)) {
-
-                // if (filter_category !== null) {
-                //     filterCategory()
-                // }
                 tr[i].style.display = ""
 
-
+                let fPrice = Number(tr[i].querySelector(".pos_price").textContent)
+                let fAmount = Number(tr[i].querySelector(".pos_amount").textContent)
+                filteredPrice = filteredPrice + (fPrice * fAmount)
             } else {
                 tr[i].style.display = "none"
             }
         }
     }
+    console.log(filteredPrice)
 }
 function filterCategory() {
-    let select, filter, table, tr, td, txtValue, categoryValueFilter, selectedValueFilter, td_cat
+    let select, table, tr, td, txtValue, categoryValueFilter, td_cat
     select = document.getElementById("filter_category_input")
-
     categoryValueFilter = filterCategoryInput.options[filterCategoryInput.selectedIndex].text
-    // selectedValueFilter = filterCategoryInput.value
     if (categoryValueFilter != "filtruj po kategorii...") {
         filter_category = categoryValueFilter.toUpperCase()
     } else {
         filter_category = ""
     }
-    console.log("filter_category", filter_category)
     table = document.getElementById("table_id")
     tr = table.getElementsByClassName("position")
-
+    filteredPrice = 0
     for (let i = 0; i < tr.length; i++) {
         td = tr[i].getElementsByTagName("td")[2]
         td_cat = tr[i].getElementsByTagName("td")[1]
@@ -354,25 +345,23 @@ function filterCategory() {
             txtValue = td.textContent || td.innerText;
             txtValue_cat = td_cat.textContent || td_cat.innerText
             if (txtValue.toUpperCase().includes(filter_name) && txtValue_cat.toUpperCase().includes(filter_category)) {
-
-                // if (filter_name !== null) {
-                //     filterName()
-                // }
-                console.log("display_category", tr[i].style.display)
-
                 tr[i].style.display = ""
 
+                let fPrice = Number(tr[i].querySelector(".pos_price").textContent)
+                let fAmount = Number(tr[i].querySelector(".pos_amount").textContent)
+                filteredPrice = filteredPrice + (fPrice * fAmount)
             } else {
                 tr[i].style.display = "none"
             }
         }
     }
+    console.log(filteredPrice)
 }
 
 const clearFilters = () => {
 
-    var tr, td
-
+    var tr, td;
+    filteredPrice = 0
     table = document.getElementById("table_id")
     tr = table.getElementsByClassName("position")
     for (let i = 0; i < tr.length; i++) {
