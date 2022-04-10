@@ -72,6 +72,9 @@ const addPosition = () => {
     else if (name.value === "") {
         alert("Wprowadź nazwę produktu!")
     }
+    else if (amount.value === "") {
+        alert("Wprowadź liczbę sztuk!")
+    }
     else if (price.value === "") {
         alert("Wprowadź cenę produktu!")
     }
