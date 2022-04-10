@@ -22,7 +22,7 @@
         <div class="up">
             <div class="nav_area">
                 <div class="nav cat">
-                    <p class="p_area">Kategoria</p>
+                    <label class="p_area">Kategoria</label>
                     <div class="input_area">
                         <select id="category" onchange="setCategory()">
                             <option value="0" selected disabled>-- wybierz kategorię produktu --</option>
@@ -35,20 +35,20 @@
                     </div>
                 </div>
                 <div class="nav">
-                    <p class="p_area">Nazwa</p>
+                    <label class="p_area">Nazwa</label>
                     <div class="input_area">
                         <input class="name" type="text" placeholder="wprowadź nazwę" maxlength="80">
                     </div>
                 </div>
 
                 <div class="nav digits">
-                    <p class="p_area">Liczba sztuk</p>
+                    <label class="p_area">Liczba sztuk</label>
                     <div class="input_area">
                         <input class="amount" type="number" min="1" value="1" step="1">
                     </div>
                 </div>
                 <div class="nav digits">
-                    <p class="p_area">Cena</p>
+                    <label class="p_area">Cena</label>
                     <div class="input_area">
                         <input class="price" type="number" step="0.01" min="0.01" placeholder="wprowadź cenę">
                     </div>
@@ -78,7 +78,7 @@
 
         <div class="middle">
             <div class="nav">
-                <p class="p_area">Opis</p>
+                <label class="p_area">Opis</label>
                 <div class="input_area">
                     <textarea id="desc" placeholder="opis opcjonalny" maxlength="200"></textarea>
                 </div>
