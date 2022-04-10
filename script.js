@@ -124,16 +124,16 @@ const clearInputs = () => {
     amount.value = "1"
 }
 function deleteAll() {
-    // if (window.confirm("Usunąć wszystkie pozycje?")) {
-    //     positionArea.textContent = ""
-    //     totalPrice = 0 //price correction
-    //     totalAmount = 0 //amount corrcetion
-    //     showPriceAndAmount()
-    //     showNoPosMsg()
-    //     clearFilters()
-    //     hideFilterPriceArea()
-    // }
-    // return
+    if (window.confirm("Usunąć wszystkie pozycje?")) {
+        positionArea.textContent = ""
+        totalPrice = 0 //price correction
+        totalAmount = 0 //amount corrcetion
+        showPriceAndAmount()
+        showNoPosMsg()
+        clearFilters()
+        hideFilterPriceArea()
+    }
+    return
 }
 const deletePosition = (positionID) => {
     const positionNotWanted = document.getElementById(positionID)
