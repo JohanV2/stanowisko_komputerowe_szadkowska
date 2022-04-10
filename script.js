@@ -107,7 +107,7 @@ const createPosition = () => {
     positionArea.appendChild(newPosition)
     positionID++ //zmienia ID każdej kolejnej pozycji
     totalPrice = totalPrice + Number(price.value) * Number(amount.value)
-    totalAmount += 1 
+    totalAmount += 1
     showPriceAndAmount()
     clearFilters()
     showNoPosMsg()
@@ -142,12 +142,9 @@ const deletePosition = (positionID) => {
     const deletedPrice = positionNotWanted.querySelector(".pos_price")
     const deletedAmount = positionNotWanted.querySelector(".pos_amount")
     totalPrice = totalPrice - Number(deletedPrice.textContent) * Number(deletedAmount.textContent);
-    // totalAmount = totalAmount - Number(deletedAmount.textContent);
     totalAmount--
     showPriceAndAmount()
     showNoPosMsg()
-    hideButtons()
-    hideButtonsWhileDelete()
     clearInputs()
     filterCategory()
     filterName()
@@ -160,14 +157,13 @@ const hideButtons = () => {
         specialBtns[i].classList.toggle("hidden")
     }
 }
-const hideButtonsWhileDelete = () => {
-    for (let i = 0; i < specialBtns.length; i++) {
-        specialBtns[i].classList.add("hidden")
-    }
-}
+
 const hideButtonsWhileEdit = () => {
     for (let i = 0; i < editBtn.length; i++) {
         editBtn[i].classList.toggle("hidden")
+    }
+    for (let j = 0; j < deleteBtn.length; j++) {
+        deleteBtn[j].classList.toggle("hidden")
     }
 }
 const toggleCategoryCreate = () => {
