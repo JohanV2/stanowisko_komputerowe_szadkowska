@@ -3,7 +3,7 @@
 Formularz ułatwiający podliczenie kosztów nowego stanowiska komputerowego.
 
 - dodawanie nowych pozycji do listy (kategoria, nazwa, opis, liczba sztuk, cena)
-- edytowanie wybranych pozycji
+- edytowanie wybranych pozycji (w standardowych polach formularza)
 - usuwanie wybranych pozycji
 
 - wyczyszczenie inputów formularza

@@ -236,7 +236,8 @@ input,
 textarea,
 select {
     height: 25px;
-    border: 1px solid black
+    border: 1px solid black;
+    outline: none;
 }
 
 textarea {
