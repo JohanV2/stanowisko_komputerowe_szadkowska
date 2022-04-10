@@ -123,15 +123,17 @@ const clearInputs = () => {
     price.value = ""
     amount.value = "1"
 }
-const deleteAll = () => {
-    positionArea.textContent = ""
-    totalPrice = 0 //price correction
-    totalAmount = 0 //amount corrcetion
-    showPriceAndAmount()
-    showNoPosMsg()
-    clearFilters()
-    hideFilterPriceArea()
-
+function deleteAll() {
+    if (window.confirm("Usunąć wszystkie pozycje?")) {
+        positionArea.textContent = ""
+        totalPrice = 0 //price correction
+        totalAmount = 0 //amount corrcetion
+        showPriceAndAmount()
+        showNoPosMsg()
+        clearFilters()
+        hideFilterPriceArea()
+    }
+    return
 }
 const deletePosition = (positionID) => {
     const positionNotWanted = document.getElementById(positionID)
