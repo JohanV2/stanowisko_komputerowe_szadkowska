@@ -107,7 +107,7 @@ const createPosition = () => {
     positionArea.appendChild(newPosition)
     positionID++ //zmienia ID każdej kolejnej pozycji
     totalPrice = totalPrice + Number(price.value) * Number(amount.value)
-    totalAmount += 1
+    totalAmount += 1 
     showPriceAndAmount()
     clearFilters()
     showNoPosMsg()
