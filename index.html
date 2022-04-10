@@ -85,12 +85,20 @@
             </div>
         </div>
         <div class="down">
-            <p class="header_table_area">Lista pozycji:</p>
-            <button onclick="window.print()" id="print_btn" title="drukuj / zapisz jako PDF"><i
-                    class="fa-solid fa-print"></i>/<i class="fa-regular fa-file-pdf"></i></button>
-            <div class="filter_category_div"></div>
-            <input type="text" id="filter_name_input" onkeyup="filterName()" placeholder="filtruj po nazwie...">
-            <button class="clear_filters_btn">Wyczyść filtry</button>
+
+
+            <div class="filter_area">
+                <div class="left_filter_area">
+                    <p class="header_table_area">Lista pozycji:</p>
+                    <button onclick="window.print()" id="print_btn" title="drukuj / zapisz jako PDF"><i
+                            class="fa-solid fa-print"></i>/<i class="fa-regular fa-file-pdf"></i></button>
+                </div>
+                <div class="right_filter_area">
+                    <div class="filter_category_div"></div>
+                    <input type="text" id="filter_name_input" onkeyup="filterName()" placeholder="filtruj po nazwie...">
+                    <button class="clear_filters_btn">Wyczyść filtry</button>
+                </div>
+            </div>
             <table class="table" id="table_id">
                 <thead>
                     <tr>

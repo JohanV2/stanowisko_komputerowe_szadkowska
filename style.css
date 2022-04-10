@@ -85,14 +85,15 @@ table {
     border-collapse: collapse;
 }
 
-th {
+.header {
+    height: 35px;
     border-collapse: collapse;
     border: 2px solid black;
+
 }
 
 
-td,
-th {
+td {
     word-wrap: break-word;
     overflow-wrap: break-word;
     padding: 5px;
@@ -108,6 +109,26 @@ td {
 table {
     /* very important for darg and drop to work */
     user-select: none;
+}
+
+.filter_area {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    align-items: flex-end;
+    align-content: space-around;
+
+}
+
+.right_filter_area {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    align-items: center;
+    align-content: flex-start;
+    margin-bottom: 10px;
 }
 
 th.empty {
@@ -234,9 +255,7 @@ button:hover {
     #print_btn,
     .edit_btn,
     .delete_btn,
-    #filter_category_input,
-    .clear_filters_btn,
-    #filter_name_input {
+    .right_filter_area {
         display: none;
     }
 

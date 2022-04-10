@@ -29,6 +29,8 @@ const clearFiltersBtn = document.querySelector(".clear_filters_btn")
 //filter category
 const divFilter = document.querySelector(".filter_category_div")
 const filterCategoryInput = category.cloneNode(true)
+filterCategoryInput.options[filterCategoryInput.selectedIndex].text = "filtruj po kategorii... "
+console.log(filterCategoryInput)
 filterCategoryInput.id = "filter_category_input"
 filterCategoryInput.setAttribute("onchange", "filterCategory()")
 divFilter.appendChild(filterCategoryInput)
@@ -336,7 +338,7 @@ function filterCategory() {
 
     categoryValueFilter = filterCategoryInput.options[filterCategoryInput.selectedIndex].text
     // selectedValueFilter = filterCategoryInput.value
-    if (categoryValueFilter != "-- wybierz kategorię produktu --") {
+    if (categoryValueFilter != "filtruj po kategorii...") {
         filter_category = categoryValueFilter.toUpperCase()
     } else {
         filter_category = ""
