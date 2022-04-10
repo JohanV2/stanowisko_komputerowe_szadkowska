@@ -12,7 +12,7 @@ const filterNameInput = document.getElementById("filter_name_input")
 const positionArea = document.querySelector(".position_area")
 const navArea = document.querySelector(".nav_area")
 const middle = document.querySelector(".middle")
-const filterShowingArea = document.querySelector("#filter_show_area")
+const filterShowingArea = document.querySelector("#show_area")
 //getting buttons
 const addBtn = document.querySelector(".add_btn")
 const clearBtn = document.querySelector(".clear_btn")
@@ -38,6 +38,7 @@ divFilter.appendChild(filterCategoryInput)
 let positionID = 1;
 let idToEdit, categoryValue, selectedValue, selectId, row;
 let filteredPrice = 0
+let filteredAmount = 0
 var filter_name = ""
 var filter_category = ""
 //price-showing variables
@@ -92,8 +93,8 @@ const createPosition = () => {
                 <td class = "pos_category">${categoryValue}</th>
                 <td class = "pos_name">${name.value}</td>
                 <td class = "pos_desc">${desc.value}</td>
-                <td class = "pos_amount">${amount.value}</td>
-                <td class = "pos_price">${price.value}</td>
+                <td class = "pos_amount">${parseInt(Number(amount.value))}</td>
+                <td class = "pos_price">${Number(price.value).toFixed(2)}</td>
                 <td class = "pos_btns">
                     <button class="edit_btn" onClick="editPosition(${positionID})" title="edytuj pozycję"><i class="fa-solid fa-pen"></i></button>
                     <button class="delete_btn" onClick="deletePosition(${positionID})" title="usuń pozycję"><i class="fa-solid fa-trash"></i></button>
@@ -107,6 +108,7 @@ const createPosition = () => {
     showPriceAndAmount()
     clearFilters()
     showNoPosMsg()
+    console.log(parseInt(Number(price.value)).toPrecision(2))
 }
 const setCategory = () => {
     categoryValue = category.options[category.selectedIndex].text
@@ -140,6 +142,7 @@ const deletePosition = (positionID) => {
     totalAmount--
     showPriceAndAmount()
     showNoPosMsg()
+    hideButtons()
     hideButtonsWhileDelete()
     clearInputs()
     filterCategory()
@@ -253,6 +256,7 @@ const showPriceAndAmount = () => {
 }
 const showFilteredPrice = () => {
     document.getElementById("filtered_price").innerHTML = filteredPrice.toFixed(2);
+    document.getElementById("filtered_amount").innerHTML = filteredAmount;
 }
 const showNoPosMsg = () => {
     const noPosMsg = document.getElementById("no_positions_msg")
@@ -317,6 +321,7 @@ function filterName() {
     table = document.getElementById("table_id")
     tr = table.getElementsByClassName("position")
     filteredPrice = 0
+    filteredAmount = 0
     for (let i = 0; i < tr.length; i++) {
         td = tr[i].getElementsByTagName("td")[2]
         td_cat = tr[i].getElementsByTagName("td")[1]
@@ -330,6 +335,7 @@ function filterName() {
                 let fPrice = Number(tr[i].querySelector(".pos_price").textContent)
                 let fAmount = Number(tr[i].querySelector(".pos_amount").textContent)
                 filteredPrice = filteredPrice + (fPrice * fAmount)
+                filteredAmount = filteredAmount + fAmount
             } else {
                 tr[i].style.display = "none"
             }
@@ -363,6 +369,8 @@ function filterCategory() {
                 let fPrice = Number(tr[i].querySelector(".pos_price").textContent)
                 let fAmount = Number(tr[i].querySelector(".pos_amount").textContent)
                 filteredPrice = filteredPrice + (fPrice * fAmount)
+                filteredAmount = filteredAmount + fAmount
+
             } else {
                 tr[i].style.display = "none"
             }
@@ -375,6 +383,7 @@ function filterCategory() {
 const clearFilters = () => {
     var tr, td;
     filteredPrice = 0
+    filteredAmount = 0
     table = document.getElementById("table_id")
     tr = table.getElementsByClassName("position")
     for (let i = 0; i < tr.length; i++) {

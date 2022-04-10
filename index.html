@@ -37,7 +37,7 @@
                 <div class="nav">
                     <p class="p_area">Nazwa</p>
                     <div class="input_area">
-                        <input class="name" type="text" placeholder="wprowadź nazwę">
+                        <input class="name" type="text" placeholder="wprowadź nazwę" maxlength="80">
                     </div>
                 </div>
 
@@ -80,7 +80,7 @@
             <div class="nav">
                 <p class="p_area">Opis</p>
                 <div class="input_area">
-                    <textarea id="desc" placeholder="opis opcjonalny"></textarea>
+                    <textarea id="desc" placeholder="opis opcjonalny" maxlength="200"></textarea>
                 </div>
             </div>
         </div>
@@ -94,10 +94,16 @@
                             class="fa-solid fa-print"></i>/<i class="fa-regular fa-file-pdf"></i></button>
                 </div>
                 <div class="right_filter_area">
+                    <div id="show_area" class="hidden">
+                        <span id="filter_show_area" >Suma kosztów po filtrowaniu: <span
+                                id="filtered_price"></span> zł</span>
+                    <p id="show_amount_f">Liczba pozycji po filtrowaniu: <span
+                        id="filtered_amount"></span> </p>
+                    </div>
                     <div class="filter_category_div"></div>
                     <input type="text" id="filter_name_input" onkeyup="filterName()" placeholder="filtruj po nazwie...">
                     <button class="clear_filters_btn">Wyczyść filtry</button>
-                    <span id = "filter_show_area" class="hidden">Suma kosztów po filtrowaniu: <span id="filtered_price"></span> zł</span>
+
                 </div>
             </div>
             <table class="table" id="table_id">
