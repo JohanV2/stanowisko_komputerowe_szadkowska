@@ -12,6 +12,7 @@ const filterNameInput = document.getElementById("filter_name_input")
 const positionArea = document.querySelector(".position_area")
 const navArea = document.querySelector(".nav_area")
 const middle = document.querySelector(".middle")
+const filterShowingArea = document.querySelector("#filter_show_area")
 //getting buttons
 const addBtn = document.querySelector(".add_btn")
 const clearBtn = document.querySelector(".clear_btn")
@@ -36,6 +37,9 @@ divFilter.appendChild(filterCategoryInput)
 //additional variables
 let positionID = 1;
 let idToEdit, categoryValue, selectedValue, selectId, row;
+let filteredPrice = 0
+var filter_name = ""
+var filter_category = ""
 //price-showing variables
 let totalPrice = 0;
 let editedPrice = 0;
@@ -121,6 +125,8 @@ const deleteAll = () => {
     totalAmount = 0 //amount corrcetion
     showPriceAndAmount()
     showNoPosMsg()
+    clearFilters()
+    hideFilterPriceArea()
 
 }
 const deletePosition = (positionID) => {
@@ -136,6 +142,8 @@ const deletePosition = (positionID) => {
     showNoPosMsg()
     hideButtonsWhileDelete()
     clearInputs()
+    filterCategory()
+    filterName()
 }
 const hideButtons = () => {
     for (let i = 0; i < normalBtns.length; i++) {
@@ -204,6 +212,9 @@ const editPosition = (positionID) => {
     editedAmount = Number(amount.value)
     hideButtons()
     hideButtonsWhileEdit()
+    filterCategory()
+    filterName()
+    clearFilters()
 
 }
 const acceptChanges = () => {
@@ -239,6 +250,9 @@ const acceptChanges = () => {
 const showPriceAndAmount = () => {
     document.getElementById("showedPrice").innerHTML = totalPrice.toFixed(2);
     document.getElementById("showedAmount").innerHTML = totalAmount;
+}
+const showFilteredPrice = () => {
+    document.getElementById("filtered_price").innerHTML = filteredPrice.toFixed(2);
 }
 const showNoPosMsg = () => {
     const noPosMsg = document.getElementById("no_positions_msg")
@@ -297,9 +311,6 @@ function sortTable(n) {
         }
     }
 }
-let filteredPrice = 0
-var filter_name = ""
-var filter_category = ""
 function filterName() {
     let table, tr, td, txtValue, td_cat
     filter_name = filterNameInput.value.toUpperCase()
@@ -325,6 +336,8 @@ function filterName() {
         }
     }
     console.log(filteredPrice)
+    showFilteredPrice()
+    showFilterPriceArea()
 }
 function filterCategory() {
     let select, table, tr, td, txtValue, categoryValueFilter, td_cat
@@ -356,10 +369,10 @@ function filterCategory() {
         }
     }
     console.log(filteredPrice)
+    showFilteredPrice()
+    showFilterPriceArea()
 }
-
 const clearFilters = () => {
-
     var tr, td;
     filteredPrice = 0
     table = document.getElementById("table_id")
@@ -368,15 +381,22 @@ const clearFilters = () => {
         td = tr[i].getElementsByTagName("td")
         tr[i].style.display = ""
     }
-
     filterCategoryInput.selectedIndex = 0
     filterNameInput.value = ""
+    hideFilterPriceArea()
 
+}
+const hideFilterPriceArea = () => {
+    filterShowingArea.classList.add("hidden")
+}
+const showFilterPriceArea = () => {
+    filterShowingArea.classList.remove("hidden")
 }
 /////////////////////////////////////////////////
 showNoPosMsg()
 showPriceAndAmount()
 filterCategory()
+hideFilterPriceArea()
 addBtn.addEventListener("click", addPosition)
 clearBtn.addEventListener("click", clearInputs)
 deleteAllBtn.addEventListener("click", deleteAll)

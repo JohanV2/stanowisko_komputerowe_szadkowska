@@ -254,7 +254,9 @@ button:hover {
     #print_btn,
     .edit_btn,
     .delete_btn,
-    .right_filter_area {
+    .filter_category_div,
+    #filter_name_input,
+    .clear_filters_btn {
         display: none;
     }
 
