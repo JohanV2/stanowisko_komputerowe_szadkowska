@@ -98,9 +98,9 @@ const createPosition = () => {
     positionArea.appendChild(newPosition)
     positionID++ //zmienia ID każdej kolejnej pozycji
     totalPrice = totalPrice + Number(price.value) * Number(amount.value)
-    // totalAmount = totalAmount + Number(amount.value)
     totalAmount += 1
     showPriceAndAmount()
+    clearFilters()
     showNoPosMsg()
 }
 const setCategory = () => {
@@ -149,6 +149,12 @@ const hideButtonsWhileDelete = () => {
         specialBtns[i].classList.add("hidden")
     }
 }
+
+const hideButtonsWhileEdit = () => {
+    for (let i = 0; i < editBtn.length; i++) {
+        editBtn[i].classList.toggle("hidden")
+    }
+}
 const toggleCategoryCreate = () => {
     categoryInput.classList.toggle("hidden")
     addCategoryBtn.classList.toggle("hidden")
@@ -168,11 +174,6 @@ const toggleCategoryCreate = () => {
     for (let i = 0; i < deleteBtns.length; i++) {
         deleteBtns[i].classList.toggle("hidden")
     }
-
-
-
-
-
 }
 const editPosition = (positionID) => {
     let positionToEdit = document.getElementById(positionID)
@@ -202,6 +203,7 @@ const editPosition = (positionID) => {
     editedPrice = Number(price.value)
     editedAmount = Number(amount.value)
     hideButtons()
+    hideButtonsWhileEdit()
 
 }
 const acceptChanges = () => {
@@ -298,7 +300,6 @@ function sortTable(n) {
 }
 var filter_name = ""
 var filter_category = ""
-
 function filterName() {
     let filter, table, tr, td, txtValue, td_cat
     filter_name = filterNameInput.value.toUpperCase()
@@ -366,8 +367,6 @@ function filterCategory() {
     }
 }
 
-
-
 const clearFilters = () => {
 
     var tr, td
@@ -391,8 +390,10 @@ addBtn.addEventListener("click", addPosition)
 clearBtn.addEventListener("click", clearInputs)
 deleteAllBtn.addEventListener("click", deleteAll)
 acceptBtn.addEventListener("click", acceptChanges)
+acceptBtn.addEventListener("click", hideButtonsWhileEdit)
 discardBtn.addEventListener("click", hideButtons)
 discardBtn.addEventListener("click", clearInputs)
+discardBtn.addEventListener("click", hideButtonsWhileEdit)
 addCategoryBtn.addEventListener("click", addCategory)
 addCategoryBtn.addEventListener("click", toggleCategoryCreate)
 createCategoryBtn.addEventListener("click", toggleCategoryCreate)

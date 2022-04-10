@@ -69,6 +69,10 @@ h1 {
     width: 47%
 }
 
+.add_category_input {
+    width: 270px;
+}
+
 .header_table_area {
     margin-top: 30px;
 }
@@ -199,8 +203,22 @@ button,
     margin-right: 20px;
 }
 
+button {
+    border-radius: 5px;
+}
+
+button:hover {
+    box-shadow: 0 0 7px 2px rgb(205, 198, 190);
+}
+
 #print_btn {
     font-size: 20px;
+    border-radius: 5px;
+}
+
+#print_btn:hover {
+    transition-duration: 0.3s;
+    border-radius: 10px;
 }
 
 /* printing */
@@ -215,7 +233,10 @@ button,
     .header_table_area,
     #print_btn,
     .edit_btn,
-    .delete_btn {
+    .delete_btn,
+    #filter_category_input,
+    .clear_filters_btn,
+    #filter_name_input {
         display: none;
     }
 
