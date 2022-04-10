@@ -108,7 +108,6 @@ const createPosition = () => {
     showPriceAndAmount()
     clearFilters()
     showNoPosMsg()
-    console.log(parseInt(Number(price.value)).toPrecision(2))
 }
 const setCategory = () => {
     categoryValue = category.options[category.selectedIndex].text
@@ -401,11 +400,12 @@ const hideFilterPriceArea = () => {
 const showFilterPriceArea = () => {
     filterShowingArea.classList.remove("hidden")
 }
-/////////////////////////////////////////////////
+
 showNoPosMsg()
 showPriceAndAmount()
 filterCategory()
 hideFilterPriceArea()
+
 addBtn.addEventListener("click", addPosition)
 clearBtn.addEventListener("click", clearInputs)
 deleteAllBtn.addEventListener("click", deleteAll)
