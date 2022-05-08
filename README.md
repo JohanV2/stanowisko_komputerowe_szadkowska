@@ -1,6 +1,7 @@
 # stanowisko_komputerowe_szadkowska
 
 Formularz ułatwiający podliczenie kosztów nowego stanowiska komputerowego.
+live preview: https://johanv2.github.io/stanowisko_komputerowe_szadkowska/
 
 - dodawanie nowych pozycji do listy (kategoria, nazwa, opis, liczba sztuk, cena)
 - edytowanie wybranych pozycji (w standardowych polach formularza)
